@@ -1,4 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import element from './plugins/element'
+
+const app = createApp(App)
+
+app.use(element)
+app.mount('#app')
