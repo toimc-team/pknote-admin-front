@@ -1,10 +1,27 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home.vue'
+import ClientHome from '@/views/my-client/home.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: Home
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      // 我的用户
+      {
+        path: '/client',
+        redirect: '/client/home'
+      },
+      // 我的用户
+      {
+        path: '/client/home',
+        component: ClientHome
+      }
+    ]
   }
 ]
 

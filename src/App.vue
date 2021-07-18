@@ -9,4 +9,8 @@
   })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .full-height {
+    height: 100%;
+  }
+</style>
