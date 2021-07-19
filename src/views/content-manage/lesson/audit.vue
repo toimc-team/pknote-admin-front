@@ -103,13 +103,13 @@
   }
   .table {
     margin-top: 32px;
-    ::v-deep .el-table th > .cell {
+    :deep(.el-table th > .cell) {
       text-align: center;
     }
-    .el-table {
+    :deep(.el-table) {
       color: #333333;
     }
-    ::v-deep .el-table thead {
+    :deep(.el-table thead) {
       font-weight: normal;
       font-size: 16px;
       color: #333333;

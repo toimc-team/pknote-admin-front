@@ -162,7 +162,7 @@
         }
       }
     }
-    ::v-deep .el-image {
+    :deep(.el-image) {
       img {
         width: 136px;
         height: 88px;
@@ -227,13 +227,13 @@
   }
   .table {
     margin-top: 15px;
-    ::v-deep .el-table th > .cell {
+    :deep(.el-table th > .cell) {
       text-align: center;
     }
-    .el-table {
+    :deep(.el-table) {
       color: #333333;
     }
-    ::v-deep .el-table thead {
+    :deep(.el-table thead) {
       font-weight: normal;
       font-size: 16px;
       color: #333333;
@@ -254,7 +254,7 @@
         }
       }
     }
-    ::v-deep .el-image {
+    :deep(.el-image) {
       img {
         width: 88px;
         height: 88px;
@@ -274,38 +274,37 @@
   .page {
     text-align: right;
     margin-top: 30px;
-    ::v-deep {
-      .el-select .el-input {
-        font-size: 16px;
-      }
-      .el-pagination__sizes .el-input .el-input__inner,
-      .el-input__inner {
-        font-size: 16px;
-      }
-      .el-pager li {
-        font-size: 16px;
-        height: 40px;
-        line-height: 40px;
-        background: #e1dfe0;
-        border-radius: 4px;
-        margin-right: 5px;
-      }
-      .el-pagination span:not([class*='suffix']) {
-        font-size: 16px;
-        height: 40px;
-        line-height: 40px;
-      }
-      .el-pagination button {
-        font-size: 16px;
-        height: 40px;
-        line-height: 40px;
-        background-color: #e1dfe0;
-        border-radius: 4px;
-        margin-right: 5px;
-      }
-      .el-input--mini .el-input__inner {
-        height: 40px;
-      }
+
+    :deep(.el-select .el-input) {
+      font-size: 16px;
+    }
+    :deep(.el-pagination__sizes .el-input .el-input__inner),
+    :deep(.el-input__inner) {
+      font-size: 16px;
+    }
+    :deep(.el-pager li) {
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      background: #e1dfe0;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+    :deep(.el-pagination span:not([class*='suffix'])) {
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+    }
+    :deep(.el-pagination button) {
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #e1dfe0;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+    :deep(.el-input--mini .el-input__inner) {
+      height: 40px;
     }
   }
 </style>
