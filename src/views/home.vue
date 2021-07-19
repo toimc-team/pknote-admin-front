@@ -1,36 +1,40 @@
 <template>
   <el-container class="full-height">
     <!-- 左侧菜单 -->
-    <el-aside width="200px" class="full-height">
-      <el-menu
-        class="full-height"
-        :default-openeds="openArr"
-        background-color="#273043"
-        text-color="#fff"
-      >
-        <div class="logo-wrap flex main-center"><i class="icon icon-logo"></i></div>
-        <component
-          v-for="(menu, i) in menuConfig"
-          :key="`sub-menu-${i}`"
-          :is="menu.noSub ? 'el-menu-item' : 'el-submenu'"
-          :index="i.toString()"
-          :class="{ currMenuItem: menu.isCurrent }"
-          @click="changePath(menu.path)"
+    <el-aside width="200px" class="full-height hidden-sm-and-down">
+      <el-scrollbar>
+        <el-menu
+          class="full-height"
+          :default-openeds="openArr"
+          background-color="#273043"
+          text-color="#fff"
         >
-          <template #title>
-            <i :class="menu.icon"></i>
-            {{ menu.title }}
-          </template>
-          <el-menu-item-group v-for="(sub, j) in menu.sub" :key="`group-${j}`">
-            <el-menu-item
-              :index="`${i}-${j}`"
-              :class="{ currMenuItem: sub.isCurrent }"
-              @click="changePath(sub.path)"
-              >{{ sub.title }}</el-menu-item
-            >
-          </el-menu-item-group>
-        </component>
-      </el-menu>
+          <div class="logo-wrap flex main-center"><i class="icon icon-logo"></i></div>
+          <component
+            :is="menu.noSub ? 'el-menu-item' : 'el-submenu'"
+            v-for="(menu, i) in menuConfig"
+            :key="`sub-menu-${i}`"
+            :index="i.toString()"
+            :class="{ currMenuItem: menu.isCurrent }"
+            @click="changePath(menu.path)"
+          >
+            <template #title>
+              <i :class="menu.icon"></i>
+              {{ menu.title }}
+            </template>
+            <el-menu-item-group v-if="menu.sub">
+              <el-menu-item
+                v-for="(sub, j) in menu.sub"
+                :key="`group-${j}`"
+                :index="`${i}-${j}`"
+                :class="{ currMenuItem: sub.isCurrent }"
+                @click="changePath(sub.path)"
+                >{{ sub.title }}</el-menu-item
+              >
+            </el-menu-item-group>
+          </component>
+        </el-menu>
+      </el-scrollbar>
     </el-aside>
 
     <!-- 右侧 -->
@@ -55,6 +59,7 @@
       </el-header>
       <el-main class="flex">
         <div class="main-content grow">
+          <!-- 子页面 -->
           <router-view></router-view>
         </div>
       </el-main>
@@ -96,34 +101,41 @@
   p {
     margin: 0;
   }
-  ::v-deep .el-container {
+  :deep(.el-container) {
     background-color: #f5f5f5;
   }
-  ::v-deep .el-menu {
+  :deep(.el-aside) {
+    background-color: #273043;
+  }
+  :deep(.el-menu) {
     border-right: none;
   }
-  ::v-deep .el-menu-item {
-    font-size: $fz-big;
-    height: 40px;
-    line-height: 40px;
-    .is-active {
-      color: #fff;
-    }
-  }
-  ::v-deep .el-submenu__title {
+  :deep(.el-menu-item),
+  :deep(.el-submenu__title) {
     font-size: $fz-sm-xx;
-    height: 40px;
-    line-height: 40px;
+    height: 56px;
+    line-height: 56px;
   }
-  ::v-deep .el-menu-item-group {
+  :deep(.el-menu-item-group) {
     .el-menu-item {
       font-size: $fz-sm-x;
       height: 40px;
       line-height: 40px;
     }
   }
-  ::v-deep header {
-    height: 56px;
+  :deep(.el-menu-item-group__title) {
+    display: none;
+  }
+  :deep(.el-menu-item i),
+  :deep(.el-submenu__title i) {
+    color: currentColor;
+    vertical-align: -1px;
+  }
+  :deep(.el-menu-item.is-active) {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2) !important;
+  }
+  :deep(header) {
     background-color: #fff;
     padding-right: 0;
   }
@@ -254,9 +266,9 @@
   }
 
   .main-content {
-    border-radius: 8px;
-    background: #fff;
-    overflow: scroll;
+    // border-radius: 8px;
+    // background: #fff;
+    // overflow: auto;
     margin: 28px 94px 30px 44px;
   }
 </style>
