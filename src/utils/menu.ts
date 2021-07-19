@@ -1,6 +1,6 @@
 import { nextTick, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import config from '@/json/menuConfig.json'
+import config from '@/utils/menuConfig'
 
 export default () => {
   const router = useRouter()
