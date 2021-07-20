@@ -21,7 +21,7 @@
       <div class="record-head">
         <div class="item">
           <span>用户</span>
-          <el-input v-model="user" placeholder="请输入申请人昵称"></el-input>
+          <el-input v-model="user" style="height: 32px" placeholder="请输入申请人昵称"></el-input>
         </div>
         <div class="item">
           <span>时间</span>
@@ -37,6 +37,7 @@
           </el-date-picker>-->
           <el-date-picker
             v-model="value"
+            style="height: 32px"
             type="daterange"
             range-separator="至"
             start-placeholder="开始日期"
@@ -89,6 +90,19 @@
           </el-table-column>
         </el-table>
       </div>
+      <div class="pagination">
+        <el-pagination
+          background
+          :current-page="currentPage4"
+          :page-sizes="[10, 20, 50, 100]"
+          :page-size="100"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="1000"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        >
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
@@ -104,11 +118,19 @@
       function handleClick(scope: any) {
         console.log('scope:', scope)
       }
+      function handleSizeChange(val: number) {
+        console.log(`每页 ${val} 条`)
+      }
+      function handleCurrentChange(val: number) {
+        console.log(`当前页: ${val}`)
+      }
       return {
         multipleTable,
         toggleSelection,
         handleSelectionChange,
         handleClick,
+        handleSizeChange,
+        handleCurrentChange,
         list: [1, 2, 3],
         user: '',
         shortcuts: [
@@ -202,7 +224,8 @@
             dynamic:
               '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
           }
-        ]
+        ],
+        currentPage4: 1
       }
     }
   })
@@ -210,9 +233,7 @@
 
 <style lang="scss" scoped>
   // @import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css);
-  :deep(#app) {
-    background-color: #f5f6fa !important;
-  }
+
   .clock-in {
     flex: 1;
     .head-title {
@@ -309,12 +330,18 @@
           &:nth-of-type(1) {
             margin-left: 0;
           }
+          &:nth-last-child(1) {
+            :deep(.el-button) {
+              min-height: 32px;
+              height: 32px;
+              padding: 0 20px;
+            }
+          }
         }
       }
 
       .table {
-        margin: 24px;
-        padding-bottom: 24px;
+        margin: 24px 24px 10px;
 
         .user-info {
           display: flex;
@@ -342,6 +369,24 @@
           text-overflow: ellipsis;
         }
       }
+
+      .pagination {
+        padding-right: 15px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
     }
+  }
+  :deep(.el-date-editor .el-range-separator) {
+    height: 32px;
+  }
+  :deep(.el-input) {
+    line-height: 32px;
+  }
+  :deep(.el-input__inner) {
+    height: 32px;
+    line-height: 32px;
   }
 </style>
