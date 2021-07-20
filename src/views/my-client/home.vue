@@ -88,7 +88,7 @@
 
 <style lang="scss" scoped>
   @import '@/assets/style/variable.scss';
-  @import '@/assets/style/_mixin.scss';
+  @import '@/assets/style/mixin.scss';
   :deep(.el-form-item__content),
   :deep(.el-select),
   :deep(.el-input),
