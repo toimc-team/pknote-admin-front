@@ -29,14 +29,46 @@
     </el-row>
 
     <!-- table -->
-    <el-table ref="multipleTable" :data="tableData" border style="width: 100%" stripe>
-      <el-table-column type="selection" width1="48"></el-table-column>
-      <el-table-column label="序列" type="index" width1="79"></el-table-column>
-      <el-table-column prop="" label="课程标题" width1="455"> </el-table-column>
-      <el-table-column prop="" label="订阅量" width1="119"></el-table-column>
-      <el-table-column prop="" label="状态" width1="119"></el-table-column>
-      <el-table-column prop="" label="课程标题" width1="454"></el-table-column>
-      <el-table-column prop="" label="操作" width="214">
+    <el-table
+      ref="multipleTable"
+      :data="tableData"
+      border
+      style="width: 100%"
+      stripe
+      tooltip-effect="dark"
+      @selection-change="() => {}"
+    >
+      <el-table-column type="selection" width1="48" align="center"></el-table-column>
+      <el-table-column label="序列" type="index" width1="79" align="center"></el-table-column>
+      <el-table-column label="课程标题" width="400" align="center">
+        <template #default="scope">
+          <div class="flex">
+            <span class="course-img no-shrink">
+              <img src="" alt="" />
+            </span>
+            <div class="colunm-flex main-between course-info">
+              <p>{{ scope.row.name }}</p>
+              <p class="status">{{ scope.row.price }}</p>
+            </div>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="sellNum" label="订阅量" width1="119" align="center"></el-table-column>
+      <el-table-column prop="status" label="状态" width1="119" align="center"></el-table-column>
+      <el-table-column label="关联类容" width="400" align="center">
+        <template #default="scope">
+          <div class="flex">
+            <span class="course-img no-shrink">
+              <img src="" alt="" />
+            </span>
+            <div class="colunm-flex main-between course-info">
+              <p>{{ scope.row.related.name }}</p>
+              <p class="status">{{ scope.row.related.type }}</p>
+            </div>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="214" align="center">
         <div class="operate-btn-wrap">
           <el-row justify="space-between" align="middle">
             <el-link type="primary" class="operate-btn">编辑</el-link>
@@ -50,6 +82,15 @@
         </div>
       </el-table-column>
     </el-table>
+    <el-row justify="end" class="pagination-rap">
+      <el-pagination
+        background
+        layout="total, sizes, prev, pager, next"
+        :page-size="100"
+        :total="1000"
+      >
+      </el-pagination>
+    </el-row>
   </div>
 </template>
 
@@ -60,21 +101,25 @@
       const feild = ref({})
       const tableData = ref([
         {
-          course: {
-            name: '什么是JavaScript，它能用来做什么？',
-            price: 0,
-            image: '',
-            subscribeNum: 100,
-            status: 1 // 1 已上架
+          name: '什么是JavaScript，它能用来做什么？',
+          price: '免费',
+          img: '',
+          sellNum: 100,
+          status: '已上架',
+          related: {
+            name: 'JavaScript基础讲解',
+            type: '优质专栏'
           }
         },
         {
-          course: {
-            name: '什么是JavaScript，它能用来做什么？',
-            price: 0,
-            image: '',
-            subscribeNum: 100,
-            status: 1 // 1 已上架
+          name: '什么是JavaScript，它能用来做什么？',
+          price: '免费',
+          img: '',
+          sellNum: 100,
+          status: '已上架',
+          related: {
+            name: 'JavaScript基础讲解',
+            type: '优质专栏'
           }
         }
       ])
@@ -89,6 +134,10 @@
 <style lang="scss" scoped>
   @import '@/assets/style/variable.scss';
   @import '@/assets/style/mixin.scss';
+  :deep(.el-tabs__item) {
+    height: 63px;
+    line-height: 63px;
+  }
   :deep(.el-form-item__content),
   :deep(.el-select),
   :deep(.el-input),
@@ -110,7 +159,7 @@
   :deep(.el-button + .el-button) {
     margin-left: 8px;
   }
-  :deep(.el-input__inner) {
+  :deep(.el-form-item .el-input__inner) {
     width: 200px;
   }
   :deep(.el-input__inner) {
@@ -144,9 +193,42 @@
   :deep(.el-link) {
     font-size: $fz-sm-xx;
   }
+  :deep(.el-table th),
+  :deep(.el-table td) {
+    padding: 16px 0;
+  }
+  :deep(.el-table th .cell) {
+    font-size: $fz-sm-xx;
+  }
+  :deep(.el-table .cell) {
+    color: $gray-s-x;
+    font-size: $fz-sm-x;
+    padding: 0 15px;
+  }
+  .course-img {
+    width: 136px;
+    height: 88px;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .course-info {
+    padding: 11px 0 12px 0;
+    margin-left: 16px;
+    line-height: 20px;
+    text-align: left;
+    .status {
+      color: $gray;
+    }
+  }
   .gap-line {
     width: 1px;
     height: 18px;
     background: $blue-x;
+  }
+  .pagination-rap {
+    margin-top: 30px;
   }
 </style>

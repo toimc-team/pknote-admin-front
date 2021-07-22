@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home.vue'
-import ClientHome from '@/views/my-client/home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
       // 我的用户
       {
         path: '/client/home',
-        component: ClientHome
+        component: () => import('@/views/my-client/home.vue')
       }
     ]
   }

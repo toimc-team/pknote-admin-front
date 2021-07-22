@@ -41,9 +41,12 @@
     <el-container>
       <!-- 头部 -->
       <el-header class="flex main-between main-padding-l" height="56px">
-        <div class="flex cross-center">
-          <i class="el-icon-search"></i>
-          <input type="text" placeholder="搜索" class="search-ipt" />
+        <div class="flex cross-center seach-ipt-wrap">
+          <el-input v-model="searchStr" placeholder="搜索">
+            <template #prefix>
+              <i class="el-input__icon el-icon-search"></i>
+            </template>
+          </el-input>
         </div>
         <div class="account-btn-wrap flex cross-center">
           <a href="javascript:;" class="home-btn"><i class="el-icon-house"></i></a>
@@ -57,8 +60,8 @@
           <a href="javascript:;" class="exit-btn">退出<i class="el-icon-switch-button"></i></a>
         </div>
       </el-header>
-      <el-main class="flex">
-        <div class="main-content grow">
+      <el-main>
+        <div class="main-content full-height">
           <!-- 子页面 -->
           <router-view></router-view>
         </div>
@@ -80,6 +83,7 @@
           return i.toString()
         })
       )
+      const searchStr = ref('')
       onMounted(() => {
         getCurrMenu()
         clickMenu()
@@ -88,6 +92,7 @@
       return {
         menuConfig,
         openArr,
+        searchStr,
         clickMenu,
         changePath
       }
@@ -97,10 +102,8 @@
 
 <style lang="scss" scoped>
   @import '@/assets/style/variable.scss';
+  @import '@/assets/style/mixin.scss';
 
-  p {
-    margin: 0;
-  }
   :deep(.el-container) {
     background-color: #f5f5f5;
   }
@@ -152,24 +155,6 @@
   }
   .flex {
     display: flex;
-    min-width: 0;
-    min-height: 0;
-  }
-  .grow {
-    flex: 1;
-  }
-  .main-between {
-    justify-content: space-between;
-  }
-  .main-center {
-    justify-content: center;
-  }
-  .cross-center {
-    align-items: center;
-  }
-  .h-v-center {
-    justify-content: center;
-    align-items: center;
   }
 
   .main-padding-l {
@@ -182,25 +167,18 @@
     font-size: $fz-big;
     color: #666;
   }
-  .search-ipt {
-    border: none;
-    font-size: $fz-sm-x;
-    margin-left: 7px;
-    &:focus-visible,
-    &:focus {
-      outline: none;
-    }
-    &::-webkit-input-placeholder {
-      color: #ccc;
-    }
-    &::-moz-input-placeholder {
-      color: #ccc;
-    }
-    &::-moz-input-placeholder {
-      color: #ccc;
-    }
-    &::-ms-input-placeholder {
-      color: #ccc;
+  .seach-ipt-wrap {
+    :deep(.el-input__inner) {
+      border: none;
+      font-size: $fz-sm-x;
+      margin-left: 7px;
+      &:focus-visible,
+      &:focus {
+        outline: none;
+      }
+      @include placeholder {
+        color: $gray-xx;
+      }
     }
   }
   .account-btn-wrap {
@@ -266,9 +244,37 @@
   }
 
   .main-content {
-    // border-radius: 8px;
-    // background: #fff;
-    // overflow: auto;
-    margin: 28px 94px 30px 44px;
+    padding: 28px 94px 30px 44px;
+    box-sizing: border-box;
+  }
+</style>
+<style lang="scss">
+  .flex {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+  }
+  .colunm-flex {
+    @extend .flex;
+    flex-direction: column;
+  }
+  .grow {
+    flex-grow: 1;
+  }
+  .no-shrink {
+    flex-shrink: 0;
+  }
+  .main-between {
+    justify-content: space-between;
+  }
+  .main-center {
+    justify-content: center;
+  }
+  .cross-center {
+    align-items: center;
+  }
+  .h-v-center {
+    justify-content: center;
+    align-items: center;
   }
 </style>

@@ -1,4 +1,5 @@
 import { App } from 'vue'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
 
 import {
   // ElAlert,
@@ -49,7 +50,7 @@ import {
   ElOption,
   // ElOptionGroup,
   // ElPageHeader,
-  // ElPagination,
+  ElPagination,
   // ElPopconfirm,
   // ElPopover,
   // ElPopper,
@@ -81,9 +82,10 @@ import {
   // ElUpload,
   // ElInfiniteScroll,
   // ElLoading,
-  ElMessage
+  ElMessage,
   // ElMessageBox,
   // ElNotification
+  locale
 } from 'element-plus'
 
 const components = [
@@ -135,7 +137,7 @@ const components = [
   ElOption,
   // ElOptionGroup,
   // ElPageHeader,
-  // ElPagination,
+  ElPagination,
   // ElPopconfirm,
   // ElPopover,
   // ElPopper,
@@ -167,6 +169,7 @@ const components = [
   // ElUpload
 ]
 
+locale(lang)
 const plugins = [
   // ElInfiniteScroll,
   // ElLoading,
