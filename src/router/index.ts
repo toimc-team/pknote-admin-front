@@ -9,13 +9,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/learn-management',
     name: 'LearnManagement',
-    component: () => import('@/views/learn-management/clock-in.vue'),
+    component: () => import('@/views/learn-management/index.vue'),
     redirect: '/learn-management/clock-in',
     children: [
       {
-        path: '/clock-in',
+        path: 'clock-in',
         name: 'ClockIn',
         component: () => import('@/views/learn-management/clock-in.vue')
+      },
+      {
+        path: 'learn-plan',
+        name: 'LearnPlan',
+        component: () => import('@/views/learn-management/learn-plan.vue')
       }
     ]
   }
