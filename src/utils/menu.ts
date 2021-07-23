@@ -15,9 +15,10 @@ export default () => {
   const getCurrMenu = () => {
     const currPath = route.path
     const configLen = menuConfig.length
-    // 两层循环
+    // 循环菜单配置
     for (let i = 0; i < configLen; i++) {
       const item = menuConfig[i]
+      // 没有子菜单
       if (item.noSub) {
         if (comparePath(item)) {
           return
@@ -25,6 +26,7 @@ export default () => {
       } else if (item.sub) {
         const sub = item.sub
         const subLen = sub?.length
+        // 循环子菜单配置
         for (let j = 0; j < subLen; j++) {
           const item = sub[j]
           if (comparePath(item)) {
@@ -34,12 +36,13 @@ export default () => {
       }
     }
     /**
-     * 标记位置
+     * 标记当前菜单的位置
      * @param item 菜单配置
      * @returns 是否完成标记
      */
     function comparePath(item: any): boolean {
       if (currPath === item.path) {
+        // 标记为当前菜单
         item.isCurrent = true
         return true
       }
@@ -53,7 +56,9 @@ export default () => {
   const clickMenu = () => {
     nextTick(() => {
       const currMenuItem = document.getElementsByClassName('currMenuItem')[0]
-      currMenuItem.dispatchEvent(new Event('click'))
+      if (currMenuItem) {
+        currMenuItem.dispatchEvent(new Event('click'))
+      }
     })
   }
 

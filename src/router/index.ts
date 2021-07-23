@@ -10,15 +10,15 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     component: Home,
     children: [
-      // 我的用户
+      // 概览
       {
-        path: '/client',
-        redirect: '/client/home'
+        path: '/overview',
+        component: () => import('@/views/overview.vue')
       },
-      // 我的用户
+      // 我的内容
       {
-        path: '/client/home',
-        component: () => import('@/views/my-client/home.vue')
+        path: '/content/my-content',
+        component: () => import('@/views/content-management/my-content.vue')
       }
     ]
   }

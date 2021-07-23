@@ -101,7 +101,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/style/variable.scss';
   @import '@/assets/style/mixin.scss';
 
   :deep(.el-container) {
@@ -115,13 +114,13 @@
   }
   :deep(.el-menu-item),
   :deep(.el-submenu__title) {
-    font-size: $fz-sm-xx;
+    font-size: 16px;
     height: 56px;
     line-height: 56px;
   }
   :deep(.el-menu-item-group) {
     .el-menu-item {
-      font-size: $fz-sm-x;
+      font-size: 14px;
       height: 40px;
       line-height: 40px;
     }
@@ -164,20 +163,20 @@
     margin: 38px 0 46px 0;
   }
   .el-icon-search {
-    font-size: $fz-big;
+    font-size: 18px;
     color: #666;
   }
   .seach-ipt-wrap {
     :deep(.el-input__inner) {
       border: none;
-      font-size: $fz-sm-x;
+      font-size: 14px;
       margin-left: 7px;
       &:focus-visible,
       &:focus {
         outline: none;
       }
       @include placeholder {
-        color: $gray-xx;
+        color: #ccc;
       }
     }
   }
@@ -218,7 +217,7 @@
     }
     i {
       color: inherit;
-      font-size: $fz-big-xx;
+      font-size: 22px;
     }
     .user-btn {
       &:after {
@@ -237,7 +236,7 @@
     .exit-btn {
       color: #343434;
       i {
-        font-size: $fz-sm;
+        font-size: 12px;
         margin-left: 10px;
       }
     }
@@ -249,12 +248,19 @@
   }
 </style>
 <style lang="scss">
+  // home 页，子页面中使用到的公共样式
+  .normal-wrap {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0 24px; // 注意：上下间距并不一定一致
+  }
+
   .flex {
     display: flex;
     min-width: 0;
     min-height: 0;
   }
-  .colunm-flex {
+  .column-flex {
     @extend .flex;
     flex-direction: column;
   }
@@ -264,6 +270,9 @@
   .no-shrink {
     flex-shrink: 0;
   }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
   .main-between {
     justify-content: space-between;
   }
@@ -272,6 +281,9 @@
   }
   .cross-center {
     align-items: center;
+  }
+  .cross-end {
+    align-items: flex-end;
   }
   .h-v-center {
     justify-content: center;

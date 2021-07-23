@@ -2,7 +2,7 @@ export default [
   {
     title: '概览',
     icon: 'el-icon-s-home',
-    path: '',
+    path: '/overview',
     noSub: true // 表示没有二级路由，有二级路由的会有 sub 数组
     // isCurrent: false // 是否是当前选中，通过浏览器输入地址时，用来标记菜单哪项处于 actived 状态
   },
@@ -12,7 +12,7 @@ export default [
     sub: [
       {
         title: '我的内容',
-        path: '/client/home'
+        path: '/content/my-content'
       },
       {
         title: '每日一课'
