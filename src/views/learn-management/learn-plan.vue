@@ -1,9 +1,12 @@
 <template>
   <div class="learn-plan">
+    <!-- 头部信息 -->
     <div class="head-title">
       <span class="head-icon"></span>
       <h5 class="head-text">用户学习计划</h5>
     </div>
+
+    <!-- 表单栏 -->
     <div class="form">
       <div class="item">
         <span>用户</span>
@@ -26,6 +29,8 @@
         <el-button>重置</el-button>
       </div>
     </div>
+
+    <!-- 表格 -->
     <div class="table">
       <el-table
         ref="multipleTable"
@@ -62,14 +67,16 @@
         <el-table-column align="center" label="操作">
           <template #default="scope">
             <div class="operating">
-              <el-button type="text" @click="handleClickApprove(scope)">查看审批流程</el-button>
-              <span class="line"></span>
-              <el-button type="text" @click="handleClickModify(scope)">修改</el-button>
+              <el-button type="text" @click="handleClickDetail(scope)">查看计划详情</el-button>
+              <!-- <span class="line"></span>
+              <el-button type="text" @click="handleClickModify(scope)">修改</el-button> -->
             </div>
           </template>
         </el-table-column>
       </el-table>
     </div>
+
+    <!-- 分页器  -->
     <div class="pagination">
       <el-pagination
         background
@@ -84,13 +91,68 @@
       </el-pagination>
     </div>
   </div>
+  <!-- 对话框 -->
+  <el-dialog v-model="dialogVisible" width="66%" title="用户学习计划详情">
+    <div class="detail-box">
+      <div class="item">
+        <p class="title">用户</p>
+        <div class="user">
+          <img :src="tableData[0].user.avatar" alt="" />
+          <span>{{ tableData[0].user.nickname }}</span>
+        </div>
+      </div>
+      <div class="item">
+        <p class="title">关联学习计划</p>
+        <div class="user"> Forest的学习计划 </div>
+      </div>
+      <div class="item">
+        <p class="title">完成情况</p>
+        <div class="user"> <span>80</span>/90 </div>
+      </div>
+      <div class="item">
+        <p class="title">最长连续打卡时间</p>
+        <div class="user"> 10个月 </div>
+      </div>
+    </div>
+    <div class="detail-box">
+      <div class="left">
+        <!-- <div class="head">
+          <div class="time">2020年7月</div>
+          <div class="time">
+            <el-button>上个月</el-button>
+          </div>
+        </div> -->
+        <el-calendar v-model="date" />
+      </div>
+      <div class="right">
+        <!-- TODO：内容展示是否需要限制行数？待确定 -->
+        <el-table
+          :data="learnData"
+          tooltip-effect="dark"
+          style="width: 100%; margin-top: 52px"
+          border
+          stripe
+        >
+          <el-table-column label="序列" width="80" align="center" prop="id"></el-table-column>
+          <el-table-column label="学习内容" align="center" prop="content"></el-table-column>
+          <el-table-column label="目标计划" prop="plan" align="center"></el-table-column>
+          <el-table-column label="完成情况" align="center">
+            <template #default="scope">
+              <span>{{ scope.row.status ? '已完成' : '未完成' }}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+  </el-dialog>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, reactive, ref } from 'vue'
 
   export default defineComponent({
     setup() {
+      // 表格数据
       const tableData = [
         {
           id: 1,
@@ -149,28 +211,53 @@
           longClockIn: 30
         }
       ]
+
+      // 模拟学习情况的数据
+      const learnData = reactive([
+        { id: 0, content: '学习持续集成、持续部署', plan: '学习持续集成、持续部署', status: false },
+        { id: 1, content: '学习持续集成、持续部署', plan: '学习持续集成、持续部署', status: true },
+        { id: 2, content: '学习持续集成、持续部署', plan: '学习持续集成、持续部署', status: true },
+        { id: 3, content: '学习持续集成、持续部署', plan: '学习持续集成、持续部署', status: false }
+      ])
+
+      // 日历
+      const date = ref(new Date())
+
+      // dialog show or hide
+      const dialogVisible = ref(false)
+
+      // 处理checkbox选择变更
       function handleSelectionChange() {}
+
+      // 处理表格每页展示数
       function handleSizeChange() {}
+
+      // 处理输入当前页数事件
       function handleCurrentChange() {}
 
-      // 查看审批流程  类型暂定any
-      function handleClickApprove(row: any) {
+      // 查看计划详情  类型暂定any
+      function handleClickDetail(row: any) {
         console.log(row)
+        dialogVisible.value = true
       }
 
       // 修改  类型暂定any
-      function handleClickModify(row: any) {
-        console.log(row)
-      }
+      // function handleClickModify(row: any) {
+      //   console.log(row)
+      // }
+
       return {
         user: '',
         value: '',
+        date,
         tableData,
+        learnData,
+        dialogVisible,
         handleSelectionChange,
         handleSizeChange,
         handleCurrentChange,
-        handleClickApprove,
-        handleClickModify
+        handleClickDetail
+        // handleClickModify
       }
     }
   })
@@ -184,6 +271,7 @@
     padding: 0 0 24px;
     overflow: hidden;
 
+    // 头部信息
     .head-title {
       display: flex;
       align-items: center;
@@ -207,6 +295,7 @@
       }
     }
 
+    // 表单栏
     .form {
       box-sizing: border-box;
       padding: 0 24px;
@@ -236,6 +325,7 @@
     .table {
       margin: 24px 24px 10px;
 
+      // 用户信息
       .user-info {
         display: flex;
         align-items: center;
@@ -253,6 +343,7 @@
         }
       }
 
+      // 操作
       .operating {
         display: flex;
         align-items: center;
@@ -267,6 +358,8 @@
         }
       }
     }
+
+    // 分页器
     .pagination {
       padding-right: 15px;
       box-sizing: border-box;
@@ -283,6 +376,93 @@
     :deep(.el-input__inner) {
       height: 32px;
       line-height: 32px;
+    }
+  }
+
+  // dialog
+  :deep(.el-dialog .el-dialog__header) {
+    position: relative !important;
+
+    &::after {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      content: ' ';
+      height: 1px;
+      width: 98%;
+    }
+  }
+  .el-dialog__body {
+    padding-top: 0 !important;
+  }
+  .detail-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:nth-of-type(2) {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(2, auto-fill);
+      grid-gap: 0 10px;
+      align-items: flex-start;
+    }
+    .item {
+      width: 220px;
+      height: 120px;
+      box-shadow: 1px 0 12px 10px #f5f6fa;
+      .title {
+        padding-left: 20px;
+        height: 24px;
+        font-size: 18px;
+        font-weight: 400;
+        position: relative;
+        &::after {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          content: ' ';
+          height: 24px;
+          width: 4px;
+          border-radius: 10px;
+          background-color: #2590f9;
+        }
+      }
+      &:nth-of-type(2) {
+        .user {
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .right {
+          padding-top: 30px;
+          box-sizing: border-box;
+        }
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        font-size: 18px;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        span {
+          margin-left: 10px;
+          max-width: 140px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
     }
   }
 </style>
