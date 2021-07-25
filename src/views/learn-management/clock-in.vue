@@ -1,5 +1,6 @@
 <template>
   <div class="clock-in">
+    <!-- 顶部信息栏 -->
     <div class="head-box">
       <div class="head-title">
         <span class="head-icon"></span>
@@ -13,11 +14,15 @@
         </div>
       </div>
     </div>
+
+    <!-- 打卡记录 -->
     <div class="record-box">
       <div class="head-title">
         <span class="head-icon"></span>
         <h5 class="head-text">打卡记录</h5>
       </div>
+
+      <!-- 表单栏 -->
       <div class="record-head">
         <div class="item">
           <span>用户</span>
@@ -57,9 +62,9 @@
         </div>
       </div>
 
+      <!-- 表格 -->
       <div class="table">
         <el-table
-          ref="multipleTable"
           :data="tableData"
           tooltip-effect="dark"
           style="width: 100%"
@@ -84,12 +89,16 @@
           </el-table-column>
           <el-table-column label="学习时长（min）" prop="learnMin" align="center"></el-table-column>
           <el-table-column label="登录时间" align="center">
-            <template #default="scope"><div @click="handleClick(scope)">2021-07-17</div></template>
+            <template #default="scope">
+              <div>{{ scope.row.date }}</div>
+            </template>
           </el-table-column>
           <el-table-column prop="successive" label="连续打卡天数" width="120" align="center">
           </el-table-column>
         </el-table>
       </div>
+
+      <!-- 分页器 -->
       <div class="pagination">
         <el-pagination
           background
@@ -108,27 +117,89 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue'
+  import { defineComponent, reactive } from 'vue'
 
   export default defineComponent({
     setup() {
-      const multipleTable = ref()
-      function toggleSelection() {}
+      // 模拟表单数据
+      const tableData = reactive([
+        {
+          id: 1,
+          user: {
+            avatar: 'https://avatars.githubusercontent.com/u/56526369',
+            nickname: 'Forest'
+          },
+          learnMin: 40,
+          successive: 30,
+          date: '2016-05-03',
+          dynamic:
+            '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
+        },
+        {
+          id: 1,
+          user: {
+            avatar: 'https://avatars.githubusercontent.com/u/56526369',
+            nickname: 'Forest'
+          },
+          learnMin: 40,
+          successive: 30,
+          date: '2016-05-03',
+          dynamic:
+            '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
+        },
+        {
+          id: 1,
+          user: {
+            avatar: 'https://avatars.githubusercontent.com/u/56526369',
+            nickname: 'Forest'
+          },
+          learnMin: 40,
+          successive: 30,
+          date: '2016-05-03',
+          dynamic:
+            '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
+        },
+        {
+          id: 1,
+          user: {
+            avatar: 'https://avatars.githubusercontent.com/u/56526369',
+            nickname: 'Forest'
+          },
+          learnMin: 40,
+          successive: 30,
+          date: '2016-05-03',
+          dynamic:
+            '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
+        },
+        {
+          id: 1,
+          user: {
+            avatar: 'https://avatars.githubusercontent.com/u/56526369',
+            nickname: 'Forest'
+          },
+          learnMin: 40,
+          successive: 30,
+          date: '2016-05-03',
+          dynamic:
+            '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
+        }
+      ])
+
+      // 处理checkbox状态变更
       function handleSelectionChange() {}
-      function handleClick(scope: any) {
-        console.log('scope:', scope)
-      }
+
+      // 处理每页展示数条数
       function handleSizeChange(val: number) {
         console.log(`每页 ${val} 条`)
       }
+
+      // 处理输入跳转页
       function handleCurrentChange(val: number) {
         console.log(`当前页: ${val}`)
       }
+
       return {
-        multipleTable,
-        toggleSelection,
         handleSelectionChange,
-        handleClick,
         handleSizeChange,
         handleCurrentChange,
         list: [1, 2, 3],
@@ -163,68 +234,7 @@
           }
         ],
         value: '',
-        tableData: [
-          {
-            id: 1,
-            user: {
-              avatar: 'https://avatars.githubusercontent.com/u/56526369',
-              nickname: 'Forest'
-            },
-            learnMin: 40,
-            successive: 30,
-            date: '2016-05-03',
-            dynamic:
-              '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
-          },
-          {
-            id: 1,
-            user: {
-              avatar: 'https://avatars.githubusercontent.com/u/56526369',
-              nickname: 'Forest'
-            },
-            learnMin: 40,
-            successive: 30,
-            date: '2016-05-03',
-            dynamic:
-              '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
-          },
-          {
-            id: 1,
-            user: {
-              avatar: 'https://avatars.githubusercontent.com/u/56526369',
-              nickname: 'Forest'
-            },
-            learnMin: 40,
-            successive: 30,
-            date: '2016-05-03',
-            dynamic:
-              '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
-          },
-          {
-            id: 1,
-            user: {
-              avatar: 'https://avatars.githubusercontent.com/u/56526369',
-              nickname: 'Forest'
-            },
-            learnMin: 40,
-            successive: 30,
-            date: '2016-05-03',
-            dynamic:
-              '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
-          },
-          {
-            id: 1,
-            user: {
-              avatar: 'https://avatars.githubusercontent.com/u/56526369',
-              nickname: 'Forest'
-            },
-            learnMin: 40,
-            successive: 30,
-            date: '2016-05-03',
-            dynamic:
-              '肌肉科技（Muscletech）全球运动补剂的神话。全球最知名品牌之一，肌肉科技明星团队包括了乔卡特，菲尔·希斯，德克斯特·杰克逊等超级明星。 肌肉科技产品无处不在，在美国任何一本健身杂志，每一场健美比赛，所有营养品专卖店，肌肉科技的标志都会矗立眼前。肌肉科技的追随者以几何速度每天增长。肌肉科技超级明星团队代表全球健美的辉煌，肌肉科技的竞争对手们也只能每天努力奋斗着甘居亚军，这就是肌肉科技文化。'
-          }
-        ],
+        tableData,
         currentPage4: 1
       }
     }
