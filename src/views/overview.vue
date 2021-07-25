@@ -90,7 +90,7 @@
 
           <div class="normal-wrap commonly-used-container">
             <h1 class="container-tit flex cross-end">
-              待办事宜
+              常用功能
               <el-link type="primary" href="javascript:;" class="attach-btn">自定义</el-link>
             </h1>
             <div class="link-list flex flex-wrap">
@@ -103,7 +103,42 @@
             </div>
           </div>
         </div>
-        <div class="right-container"></div>
+        <div class="right-container">
+          <!-- 通知 -->
+          <!-- 支持多通知滚动 -->
+          <!-- TODO 滚动动画 -->
+          <div class="notification-wrap normal-wrap flex cross-center">
+            <i class="el-icon-bell no-shrink"></i>
+            <div class="notification-list flex grow">
+              <div class="notification-item flex grow main-between cross-center">
+                <p class="text">关于tiomc系统升级的通知</p>
+                <p class="time">2020-04-08 22:59:20</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="normal-wrap customer-service-container">
+            <h1 class="container-tit flex cross-end">在线客服</h1>
+            <div class="service-wrap column-flex h-v-center">
+              <p class="hot-line flex cross-center">
+                <i class="el-icon-service"></i>
+                400-820-82088
+              </p>
+              <a href="javascript:;" class="get-service-btn flex h-v-center">点击在线咨询</a>
+            </div>
+          </div>
+
+          <!-- 微信 -->
+          <div class="normal-wrap wechat-container flex">
+            <img src="" title="微信公众号" class="code-img" />
+            <div class="get-wechat-wrap">
+              <p class="flex cross-center"><i class="el-icon-chat-dot-round"></i>微信搜一搜</p>
+              <a href="javascript:;" class="flex h-v-center">
+                <i class="el-icon-search"></i>toimc前端技术
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </el-scrollbar>
   </div>
@@ -311,5 +346,80 @@
   }
   .right-container {
     width: 29%;
+  }
+  .notification-wrap {
+    height: 64px;
+    .notification-list {
+      margin-left: 8px;
+    }
+    .notification-item {
+      .text {
+        color: #666;
+        font-size: 14px;
+      }
+      .time {
+        color: #999;
+        font-size: 12px;
+      }
+    }
+  }
+  .customer-service-container {
+    margin-top: 16px;
+    .service-wrap {
+      margin-top: 12px;
+    }
+    .hot-line {
+      color: #666;
+      margin-top: 20px;
+      .el-icon-service {
+        font-size: 32px;
+        margin-right: 15px;
+      }
+    }
+    .get-service-btn {
+      width: 240px;
+      height: 48px;
+      color: #2590f9;
+      border: 1px solid currentColor;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 15px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .wechat-container {
+    margin-top: 16px;
+    padding: 20px;
+    .code-img {
+      width: 120px;
+      height: 120px;
+    }
+    .get-wechat-wrap {
+      // width: 56%;
+      margin-left: 32px;
+      p {
+        color: #333;
+        font-size: 24px;
+        i {
+          font-size: 40px;
+          color: #55b637; // 缺图标 将来用不着的样式
+          margin-right: 16px;
+        }
+      }
+      a {
+        width: 240px;
+        height: 48px;
+        color: #666;
+        border: 1px solid #333;
+        border-radius: 8px;
+        font-size: 20px;
+        text-decoration: none;
+        margin-top: 20px;
+      }
+      .el-icon-search {
+        font-size: 24px;
+      }
+    }
   }
 </style>

@@ -10,15 +10,31 @@
       <!-- 表单 -->
       <el-row justify="space-between">
         <el-col :span="20">
-          <el-form :inline="true" :model="feild">
+          <!-- TODO 解决 console 中的类型警告 -->
+          <el-form :inline="true">
             <el-form-item>
-              <el-select></el-select>
+              <el-select placeholder="请选择" v-model="sourceStatus">
+                <el-option
+                  v-for="(status, i) in statusOptions"
+                  :key="`资源状态-${i}`"
+                  :label="status.label"
+                  :value="status.value"
+                ></el-option>
+              </el-select>
             </el-form-item>
             <el-form-item>
-              <el-date-picker></el-date-picker>
+              <el-date-picker
+                v-model="creatTime"
+                type="date"
+                placeholder="上架时间"
+              ></el-date-picker>
             </el-form-item>
             <el-form-item>
-              <el-input :placeholder="'请输入课程名称'" class="name-ipt"></el-input>
+              <el-input
+                :placeholder="'请输入课程名称'"
+                class="name-ipt"
+                v-model="sourceName"
+              ></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary">筛选</el-button>
@@ -105,8 +121,33 @@
   import { defineComponent, ref } from 'vue'
   export default defineComponent({
     setup() {
-      const feild = ref({})
-      const tableData = ref([
+      const feild = {}
+      const statusOptions = [
+        {
+          value: '1',
+          label: '全部状态'
+        },
+        {
+          value: '2',
+          label: '草稿'
+        },
+        {
+          value: '3',
+          label: '审核中'
+        },
+        {
+          value: '4',
+          label: '已上架'
+        },
+        {
+          value: '5',
+          label: '已下架'
+        }
+      ]
+      let sourceStatus = ref(statusOptions[0].value)
+      let creatTime = ref('')
+      let sourceName = ref('')
+      const tableData = [
         {
           name: '什么是JavaScript，它能用来做什么？',
           price: '免费',
@@ -129,9 +170,13 @@
             type: '优质专栏'
           }
         }
-      ])
+      ]
       return {
         feild,
+        sourceStatus,
+        creatTime,
+        sourceName,
+        statusOptions,
         tableData
       }
     }
@@ -172,7 +217,7 @@
   :deep(.el-input__inner) {
     color: #262626;
     border-color: #d9d9d9;
-    padding: 0 12px;
+    // padding: 0 12px;
     @include placeholder {
       color: #ccc;
     }
