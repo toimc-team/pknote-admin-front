@@ -1,4 +1,5 @@
 import { App } from 'vue'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
 
 import {
   // ElAlert,
@@ -11,7 +12,7 @@ import {
   // ElBreadcrumbItem,
   ElButton,
   // ElButtonGroup,
-  // ElCalendar,
+  ElCalendar,
   // ElCard,
   // ElCarousel,
   // ElCarouselItem,
@@ -27,7 +28,7 @@ import {
   // ElColorPicker,
   // ElContainer,
   ElDatePicker,
-  // ElDialog,
+  ElDialog,
   // ElDivider,
   // ElDrawer,
   // ElDropdown,
@@ -99,7 +100,7 @@ const components = [
   // ElBreadcrumbItem,
   ElButton,
   // ElButtonGroup,
-  // ElCalendar,
+  ElCalendar,
   // ElCard,
   // ElCarousel,
   // ElCarouselItem,
@@ -115,7 +116,7 @@ const components = [
   // ElColorPicker,
   // ElContainer,
   ElDatePicker,
-  // ElDialog,
+  ElDialog,
   // ElDivider,
   // ElDrawer,
   // ElDropdown,
@@ -169,6 +170,7 @@ const components = [
   ElUpload
   // QuillEditor
 ]
+
 locale(lang)
 const plugins = [
   // ElInfiniteScroll,
