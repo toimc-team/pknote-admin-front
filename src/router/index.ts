@@ -1,11 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home.vue'
 
+import lesson from './modules/lesson'
+const routes = [
+
+
 const routes: Array<RouteRecordRaw> = [
+
   {
     path: '/',
     component: Home
   },
+  ...lesson
   {
     path: '/learn-management',
     name: 'LearnManagement',

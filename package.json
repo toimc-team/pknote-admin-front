@@ -17,7 +17,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^4.0.4",
     "element-plus": "^1.0.2-beta.55",
+    "tinymce": "^5.8.2",
     "vue": "^3.0.5",
     "vue-router": "4",
     "vuex": "^4.0.2"
