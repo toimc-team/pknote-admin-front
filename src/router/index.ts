@@ -9,8 +9,23 @@ const routes: Array<RouteRecordRaw> = [
 
   {
     path: '/',
-    component: Home
+    redirect: '/home'
   },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      // 概览
+      {
+        path: '/overview',
+        component: () => import('@/views/overview.vue')
+      },
+      // 我的内容
+      {
+        path: '/content/my-content',
+        component: () => import('@/views/content-management/my-content.vue')
+      }
+    ]
   ...lesson
   {
     path: '/learn-management',
