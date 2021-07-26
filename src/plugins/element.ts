@@ -1,4 +1,5 @@
 import { App } from 'vue'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
 
 import {
   // ElAlert,
@@ -11,7 +12,7 @@ import {
   // ElBreadcrumbItem,
   ElButton,
   // ElButtonGroup,
-  // ElCalendar,
+  ElCalendar,
   // ElCard,
   // ElCarousel,
   // ElCarouselItem,
@@ -26,20 +27,20 @@ import {
   // ElCollapseTransition,
   // ElColorPicker,
   // ElContainer,
-  // ElDatePicker,
-  // ElDialog,
+  ElDatePicker,
+  ElDialog,
   // ElDivider,
   // ElDrawer,
   // ElDropdown,
   // ElDropdownItem,
   // ElDropdownMenu,
   // ElFooter,
-  // ElForm,
-  // ElFormItem,
+  ElForm,
+  ElFormItem,
   // ElHeader,
   // ElIcon,
   // ElImage,
-  // ElInput,
+  ElInput,
   // ElInputNumber,
   // ElLink,
   // ElMain,
@@ -49,7 +50,7 @@ import {
   // ElOption,
   // ElOptionGroup,
   // ElPageHeader,
-  // ElPagination,
+  ElPagination,
   // ElPopconfirm,
   // ElPopover,
   // ElPopper,
@@ -67,8 +68,8 @@ import {
   // ElSubmenu,
   // ElSwitch,
   // ElTabPane,
-  // ElTable,
-  // ElTableColumn,
+  ElTable,
+  ElTableColumn,
   // ElTabs,
   // ElTag,
   // ElTimePicker,
@@ -81,9 +82,10 @@ import {
   // ElUpload,
   // ElInfiniteScroll,
   // ElLoading,
-  ElMessage
+  ElMessage,
   // ElMessageBox,
   // ElNotification
+  locale
 } from 'element-plus'
 
 const components = [
@@ -95,9 +97,9 @@ const components = [
   // ElBadge,
   // ElBreadcrumb,
   // ElBreadcrumbItem,
-  ElButton
+  ElButton,
   // ElButtonGroup,
-  // ElCalendar,
+  ElCalendar,
   // ElCard,
   // ElCarousel,
   // ElCarouselItem,
@@ -112,20 +114,20 @@ const components = [
   // ElCollapseTransition,
   // ElColorPicker,
   // ElContainer,
-  // ElDatePicker,
-  // ElDialog,
+  ElDatePicker,
+  ElDialog,
   // ElDivider,
   // ElDrawer,
   // ElDropdown,
   // ElDropdownItem,
   // ElDropdownMenu,
   // ElFooter,
-  // ElForm,
-  // ElFormItem,
+  ElForm,
+  ElFormItem,
   // ElHeader,
   // ElIcon,
   // ElImage,
-  // ElInput,
+  ElInput,
   // ElInputNumber,
   // ElLink,
   // ElMain,
@@ -135,7 +137,7 @@ const components = [
   // ElOption,
   // ElOptionGroup,
   // ElPageHeader,
-  // ElPagination,
+  ElPagination,
   // ElPopconfirm,
   // ElPopover,
   // ElPopper,
@@ -153,8 +155,8 @@ const components = [
   // ElSubmenu,
   // ElSwitch,
   // ElTabPane,
-  // ElTable,
-  // ElTableColumn,
+  ElTable,
+  ElTableColumn
   // ElTabs,
   // ElTag,
   // ElTimePicker,
@@ -167,6 +169,7 @@ const components = [
   // ElUpload
 ]
 
+locale(lang)
 const plugins = [
   // ElInfiniteScroll,
   // ElLoading,
