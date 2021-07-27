@@ -103,7 +103,7 @@
             </div>
           </div>
         </div>
-        <div class="right-container">
+        <div class="right-container column-flex">
           <!-- 通知 -->
           <!-- 支持多通知滚动 -->
           <!-- TODO 滚动动画 -->
@@ -137,6 +137,24 @@
                 <i class="el-icon-search"></i>toimc前端技术
               </a>
             </div>
+          </div>
+
+          <!-- 常见功能 -->
+          <div class="normal-wrap commonly-question-container column-flex grow">
+            <h1 class="container-tit flex cross-end">
+              常见问题
+              <el-link type="primary" href="javascript:;" class="attach-btn">帮助中心</el-link>
+            </h1>
+            <el-scrollbar>
+              <div class="question-list grow">
+                <p class="question-item">如何进行提现？</p>
+                <p class="question-item">如何上架我的课程？</p>
+                <p class="question-item">toimc内容发布规范？</p>
+                <p class="question-item">提现的审核流程是什么?</p>
+                <p class="question-item">如何创建图文内容的课程？</p>
+                <p class="question-item">上次的视频课程要求是什么？</p>
+              </div>
+            </el-scrollbar>
           </div>
         </div>
       </div>
@@ -419,6 +437,22 @@
       }
       .el-icon-search {
         font-size: 24px;
+      }
+    }
+  }
+
+  .commonly-question-container {
+    margin-top: 16px;
+    max-height: 480px;
+    overflow: hidden;
+    h1 {
+      padding-bottom: 31px;
+    }
+    .question-list {
+      color: #666;
+      font-size: 16px;
+      p {
+        margin-bottom: 31px;
       }
     }
   }
