@@ -2,11 +2,8 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home.vue'
 
 import lesson from './modules/lesson'
-const routes = [
-
 
 const routes: Array<RouteRecordRaw> = [
-
   {
     path: '/',
     redirect: '/home'
@@ -24,9 +21,15 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/content/my-content',
         component: () => import('@/views/content-management/my-content.vue')
+      },
+      // 新建图文
+      {
+        path: '/content/add-text',
+        component: () => import('@/views/content-management/add-text-content.vue')
       }
     ]
-  ...lesson
+  },
+  ...lesson,
   {
     path: '/learn-management',
     name: 'LearnManagement',
