@@ -13,7 +13,7 @@
           <!-- TODO 解决 console 中的类型警告 -->
           <el-form :inline="true">
             <el-form-item>
-              <el-select placeholder="请选择" v-model="sourceStatus">
+              <el-select v-model="sourceStatus" placeholder="请选择">
                 <el-option
                   v-for="(status, i) in statusOptions"
                   :key="`资源状态-${i}`"
@@ -31,9 +31,9 @@
             </el-form-item>
             <el-form-item>
               <el-input
+                v-model="sourceName"
                 :placeholder="'请输入课程名称'"
                 class="name-ipt"
-                v-model="sourceName"
               ></el-input>
             </el-form-item>
             <el-form-item>
@@ -42,7 +42,7 @@
             </el-form-item>
           </el-form>
         </el-col>
-        <el-button type="primary">新建图文</el-button>
+        <el-button type="primary" @click="createNew">新建图文</el-button>
       </el-row>
 
       <!-- table -->
@@ -119,6 +119,7 @@
 
 <script>
   import { defineComponent, ref } from 'vue'
+  import { useRouter } from 'vue-router'
   export default defineComponent({
     setup() {
       const feild = {}
@@ -171,13 +172,20 @@
           }
         }
       ]
+
+      // 跳转新建
+      const router = useRouter()
+      const createNew = () => {
+        router.push('/content/add-text')
+      }
       return {
         feild,
         sourceStatus,
         creatTime,
         sourceName,
         statusOptions,
-        tableData
+        tableData,
+        createNew
       }
     }
   })
