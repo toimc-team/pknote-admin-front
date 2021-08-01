@@ -3,7 +3,7 @@
   <div class="full-height">
     <el-scrollbar>
       <div class="flex main-between">
-        <div class="left-container">
+        <div class="left-container column-flex">
           <!-- 用户基本信息 -->
           <div class="base-msg-wrap flex main-between">
             <!-- 新用户 -->
@@ -88,7 +88,7 @@
             </el-table>
           </div>
 
-          <div class="normal-wrap commonly-used-container">
+          <div class="normal-wrap commonly-used-container grow">
             <h1 class="container-tit flex cross-end">
               常用功能
               <el-link type="primary" href="javascript:;" class="attach-btn">自定义</el-link>
@@ -129,9 +129,9 @@
           </div>
 
           <!-- 微信 -->
-          <div class="normal-wrap wechat-container flex">
+          <div class="normal-wrap wechat-container flex flex-wrap">
             <img src="" title="微信公众号" class="code-img" />
-            <div class="get-wechat-wrap">
+            <div class="get-wechat-wrap grow">
               <p class="flex cross-center"><i class="el-icon-chat-dot-round"></i>微信搜一搜</p>
               <a href="javascript:;" class="flex h-v-center">
                 <i class="el-icon-search"></i>toimc前端技术
@@ -395,7 +395,7 @@
       }
     }
     .get-service-btn {
-      width: 240px;
+      width: 73%;
       height: 48px;
       color: #2590f9;
       border: 1px solid currentColor;
@@ -408,14 +408,17 @@
 
   .wechat-container {
     margin-top: 16px;
-    padding: 20px;
+    padding: 20px 20px 0;
     .code-img {
       width: 120px;
       height: 120px;
+      margin-right: 32px;
+      margin-bottom: 20px;
     }
     .get-wechat-wrap {
       // width: 56%;
-      margin-left: 32px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
       p {
         color: #333;
         font-size: 24px;
@@ -426,7 +429,8 @@
         }
       }
       a {
-        width: 240px;
+        width: 97%;
+        max-width: 240px;
         height: 48px;
         color: #666;
         border: 1px solid #333;
@@ -434,6 +438,7 @@
         font-size: 20px;
         text-decoration: none;
         margin-top: 20px;
+        box-sizing: border-box;
       }
       .el-icon-search {
         font-size: 24px;
@@ -443,7 +448,7 @@
 
   .commonly-question-container {
     margin-top: 16px;
-    max-height: 480px;
+    // max-height: 480px;
     overflow: hidden;
     h1 {
       padding-bottom: 31px;

@@ -1,7 +1,7 @@
 <template>
   <el-container class="full-height">
     <!-- 左侧菜单 -->
-    <el-aside width="200px" class="full-height hidden-sm-and-down">
+    <el-aside width="200px" class="full-height hidden-md-and-down">
       <el-scrollbar>
         <el-menu
           class="full-height"
@@ -236,8 +236,8 @@
     .exit-btn {
       color: #343434;
       i {
-        font-size: 12px;
-        margin-left: 10px;
+        font-size: 14px;
+        margin-left: 8px;
       }
     }
   }
