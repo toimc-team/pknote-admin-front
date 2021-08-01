@@ -130,7 +130,16 @@
 
           <!-- 微信 -->
           <div class="normal-wrap wechat-container flex flex-wrap">
-            <img src="" title="微信公众号" class="code-img" />
+            <span class="code-img flex">
+              <!-- 微信公众号图片 -->
+              <el-image :src="''" class="flex grow">
+                <template #error>
+                  <div class="flex h-v-center grow">
+                    <i class="el-icon-picture-outline placeholder-img-icon"></i>
+                  </div>
+                </template>
+              </el-image>
+            </span>
             <div class="get-wechat-wrap grow">
               <p class="flex cross-center"><i class="el-icon-chat-dot-round"></i>微信搜一搜</p>
               <a href="javascript:;" class="flex h-v-center">
@@ -414,6 +423,14 @@
       height: 120px;
       margin-right: 32px;
       margin-bottom: 20px;
+      background: #f5f5f5;
+      :deep(.el-image) {
+        display: flex;
+      }
+      .placeholder-img-icon {
+        color: #666;
+        font-size: 28px;
+      }
     }
     .get-wechat-wrap {
       // width: 56%;

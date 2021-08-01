@@ -53,7 +53,13 @@
           <a href="javascript:;" class="notification-btn"><i class="el-icon-bell"></i></a>
           <p class="pipe flex cross-center">
             <span class="header-img-wrap flex">
-              <img src="" />
+              <el-image :src="''" class="flex grow">
+                <template #error>
+                  <div class="flex h-v-center grow">
+                    <i class="el-icon-picture-outline placeholder-img-icon"></i>
+                  </div>
+                </template>
+              </el-image>
             </span>
             <a href="javascript:;" class="user-btn flex cross-center">admin</a>
           </p>
@@ -205,9 +211,12 @@
       background-color: #f5f5f5;
       overflow: hidden;
       margin-right: 10px;
-      img {
-        width: 100%;
-        height: 100%;
+      :deep(.el-image) {
+        display: flex;
+      }
+      .placeholder-img-icon {
+        color: #666;
+        font-size: 16px;
       }
     }
     a {
