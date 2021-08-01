@@ -87,7 +87,6 @@ import {
   // ElNotification,
   locale
 } from 'element-plus'
-import lang from 'element-plus/lib/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
 const components = [
   // ElAlert,
@@ -158,7 +157,7 @@ const components = [
   ElTabPane,
   ElTable,
   ElTableColumn,
-  ElTabs
+  ElTabs,
   // ElTag,
   // ElTimePicker,
   // ElTimeSelect,
