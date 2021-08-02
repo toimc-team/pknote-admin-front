@@ -4,7 +4,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { defineComponent } from 'vue'
   import tinymce from 'tinymce/tinymce'
   import Editor from '@tinymce/tinymce-vue'
   import 'tinymce/icons/default/icons'
@@ -18,7 +19,7 @@
   import 'tinymce/plugins/colorpicker'
   import 'tinymce/plugins/textcolor'
   // import 'tinymce/skins/content/default/content.css'
-  export default {
+  export default defineComponent({
     name: 'Tinymce',
     components: {
       Editor
@@ -43,6 +44,7 @@
           'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat'
       }
     },
+    emits: ['input', 'onClick'],
     data() {
       return {
         //初始化配置
@@ -57,7 +59,7 @@
           menubar: false, //顶部菜单栏显示
           //此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
           //如需ajax上传可参考https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
-          images_upload_handler: (blobInfo, success, failure) => {
+          images_upload_handler: (blobInfo: any, success: any, failure: any) => {
             console.log(failure)
             const img = 'data:image/jpeg;base64,' + blobInfo.base64()
             success(img)
@@ -80,7 +82,7 @@
     methods: {
       //添加相关的事件，可用的事件参照文档=> https://github.com/tinymce/tinymce-vue => All available events
       //需要什么事件可以自己增加
-      onClick(e) {
+      onClick(e: MouseEvent) {
         this.$emit('onClick', e, tinymce)
       },
       //可以添加一些自己的自定义事件，如清空内容
@@ -88,7 +90,7 @@
         this.myValue = ''
       }
     }
-  }
+  })
 </script>
 
 <style scoped></style>
