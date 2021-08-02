@@ -13,7 +13,7 @@
           <!-- TODO 解决 console 中的类型警告 -->
           <el-form :inline="true">
             <el-form-item>
-              <el-select placeholder="请选择" v-model="sourceStatus">
+              <el-select v-model="sourceStatus" placeholder="请选择">
                 <el-option
                   v-for="(status, i) in statusOptions"
                   :key="`资源状态-${i}`"
@@ -24,16 +24,16 @@
             </el-form-item>
             <el-form-item>
               <el-date-picker
-                v-model="creatTime"
+                v-model="createTime"
                 type="date"
                 placeholder="上架时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item>
               <el-input
+                v-model="sourceName"
                 :placeholder="'请输入课程名称'"
                 class="name-ipt"
-                v-model="sourceName"
               ></el-input>
             </el-form-item>
             <el-form-item>
@@ -63,7 +63,7 @@
               <span class="course-img no-shrink">
                 <img src="" alt="" />
               </span>
-              <div class="colunm-flex main-between course-info">
+              <div class="column-flex main-between course-info">
                 <p>{{ scope.row.name }}</p>
                 <p class="status">{{ scope.row.price }}</p>
               </div>
@@ -83,7 +83,7 @@
               <span class="course-img no-shrink">
                 <img src="" alt="" />
               </span>
-              <div class="colunm-flex main-between course-info">
+              <div class="column-flex main-between course-info">
                 <p>{{ scope.row.related.name }}</p>
                 <p class="status">{{ scope.row.related.type }}</p>
               </div>
@@ -121,7 +121,7 @@
   import { defineComponent, ref } from 'vue'
   export default defineComponent({
     setup() {
-      const feild = {}
+      const field = {}
       const statusOptions = [
         {
           value: '1',
@@ -145,7 +145,7 @@
         }
       ]
       let sourceStatus = ref(statusOptions[0].value)
-      let creatTime = ref('')
+      let createTime = ref('')
       let sourceName = ref('')
       const tableData = [
         {
@@ -172,9 +172,9 @@
         }
       ]
       return {
-        feild,
+        field,
         sourceStatus,
-        creatTime,
+        createTime,
         sourceName,
         statusOptions,
         tableData
