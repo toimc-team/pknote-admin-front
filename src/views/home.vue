@@ -125,6 +125,9 @@
     font-size: 16px;
     height: 56px;
     line-height: 56px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+    }
   }
   :deep(.el-menu-item-group) {
     .el-menu-item {
@@ -142,8 +145,8 @@
     vertical-align: -1px;
   }
   :deep(.el-menu-item.is-active) {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2) !important;
+    color: #333;
+    background-color: #f5f6fa !important;
   }
   :deep(header) {
     background-color: #fff;
