@@ -24,7 +24,7 @@
             </el-form-item>
             <el-form-item>
               <el-date-picker
-                v-model="creatTime"
+                v-model="createTime"
                 type="date"
                 placeholder="上架时间"
               ></el-date-picker>
@@ -63,7 +63,7 @@
               <span class="course-img no-shrink">
                 <img src="" alt="" />
               </span>
-              <div class="colunm-flex main-between course-info">
+              <div class="column-flex main-between course-info">
                 <p>{{ scope.row.name }}</p>
                 <p class="status">{{ scope.row.price }}</p>
               </div>
@@ -83,7 +83,7 @@
               <span class="course-img no-shrink">
                 <img src="" alt="" />
               </span>
-              <div class="colunm-flex main-between course-info">
+              <div class="column-flex main-between course-info">
                 <p>{{ scope.row.related.name }}</p>
                 <p class="status">{{ scope.row.related.type }}</p>
               </div>
@@ -122,7 +122,7 @@
   import { useRouter } from 'vue-router'
   export default defineComponent({
     setup() {
-      const feild = {}
+      const field = {}
       const statusOptions = [
         {
           value: '1',
@@ -146,7 +146,7 @@
         }
       ]
       let sourceStatus = ref(statusOptions[0].value)
-      let creatTime = ref('')
+      let createTime = ref('')
       let sourceName = ref('')
       const tableData = [
         {
@@ -179,9 +179,9 @@
         router.push('/content/add-text')
       }
       return {
-        feild,
+        field,
         sourceStatus,
-        creatTime,
+        createTime,
         sourceName,
         statusOptions,
         tableData,
