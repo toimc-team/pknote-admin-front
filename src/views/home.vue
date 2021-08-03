@@ -67,10 +67,12 @@
         </div>
       </el-header>
       <el-main>
-        <div class="main-content full-height">
-          <!-- 子页面 -->
-          <router-view></router-view>
-        </div>
+        <el-scrollbar>
+          <div class="main-content column-flex">
+            <!-- 子页面 -->
+            <router-view></router-view>
+          </div>
+        </el-scrollbar>
       </el-main>
     </el-container>
   </el-container>
@@ -250,10 +252,14 @@
       }
     }
   }
-
+  // 会影响到后面子页面的 el-scrollbar__view
+  :deep(.el-scrollbar__view) {
+    height: 100%;
+  }
   .main-content {
     padding: 28px 94px 30px 44px;
     box-sizing: border-box;
+    min-height: 100%;
   }
 </style>
 <style lang="scss">

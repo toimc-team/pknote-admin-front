@@ -1,173 +1,170 @@
 <template>
   <!-- 概览 -->
-  <div class="full-height">
-    <el-scrollbar>
-      <div class="flex main-between">
-        <div class="left-container column-flex">
-          <!-- 用户基本信息 -->
-          <div class="base-msg-wrap flex main-between">
-            <!-- 新用户 -->
-            <div class="normal-wrap base-msg-item user-num-wrap">
-              <div class="main-num-wrap column-flex h-v-center">
-                <h2>新用户</h2>
-                <p>0</p>
-              </div>
-              <el-row class="item-num-wrap" align="middle">
-                <el-col :span="12">普通用户：0</el-col>
-                <span class="gap-line"></span>
-                <el-col :span="12">会员用户：0</el-col>
-              </el-row>
-            </div>
-            <!-- 总用户 -->
-            <div class="normal-wrap base-msg-item user-num-wrap">
-              <div class="main-num-wrap column-flex h-v-center">
-                <h2>总用户</h2>
-                <p>0</p>
-              </div>
-              <el-row class="item-num-wrap" align="middle">
-                <el-col :span="12">普通用户：0</el-col>
-                <span class="gap-line"></span>
-                <el-col :span="12">会员用户：0</el-col>
-              </el-row>
-            </div>
-
-            <div class="base-msg-item column-flex main-between">
-              <div class="normal-wrap specific-msg flex main-between cross-center">
-                <p>今日收入(元)</p>
-                <p><span class="num">22.00</span></p>
-              </div>
-              <div class="normal-wrap specific-msg flex main-between cross-center">
-                <p>可提现金额(元)</p>
-                <p class="flex cross-center">
-                  <span class="num">22.00</span>
-                  <el-link type="primary" class="draw-money-btn">
-                    提现<i class="el-icon-arrow-right"></i>
-                  </el-link>
-                </p>
-              </div>
-            </div>
+  <div class="flex main-between grow">
+    <!-- <el-scrollbar> -->
+    <!-- <div class="flex main-between"> -->
+    <div class="left-container column-flex">
+      <!-- 用户基本信息 -->
+      <div class="base-msg-wrap flex main-between">
+        <!-- 新用户 -->
+        <div class="normal-wrap base-msg-item user-num-wrap">
+          <div class="main-num-wrap column-flex h-v-center">
+            <h2>新用户</h2>
+            <p>0</p>
           </div>
-
-          <!-- 待办 -->
-          <div class="normal-wrap agenda-container">
-            <h1 class="container-tit">待办事宜</h1>
-            <div class="tabs-wrap">
-              <el-tabs @tab-click="() => {}">
-                <el-tab-pane label="内容上架"></el-tab-pane>
-                <el-tab-pane label="提现"></el-tab-pane>
-                <el-tab-pane label="作者认证"></el-tab-pane>
-                <el-tab-pane label="机构认证"></el-tab-pane>
-                <el-tab-pane label="退款"></el-tab-pane>
-                <el-tab-pane label=""></el-tab-pane>
-              </el-tabs>
-              <el-link type="primary" class="get-more-btn"
-                >查看更多<i class="el-icon-arrow-right"></i
-              ></el-link>
-            </div>
-            <!-- 表 -->
-            <!-- TODO 后面应该移到 el-tab-pane 中 -->
-            <el-table :data="tableData" style="width: 100%" stripe border>
-              <el-table-column
-                type="index"
-                label="序列"
-                align="center"
-                width="60"
-              ></el-table-column>
-              <el-table-column
-                prop="description"
-                label="描述"
-                align="center"
-                width="520"
-              ></el-table-column>
-              <el-table-column prop="comeFrom" label="提交人/机构" align="center"></el-table-column>
-              <el-table-column label="操作" align="center">
-                <el-link type="primary" href="javascript:;"
-                  ><i class="el-icon-s-tools"></i>处理</el-link
-                >
-              </el-table-column>
-            </el-table>
-          </div>
-
-          <div class="normal-wrap commonly-used-container grow">
-            <h1 class="container-tit flex cross-end">
-              常用功能
-              <el-link type="primary" href="javascript:;" class="attach-btn">自定义</el-link>
-            </h1>
-            <div class="link-list flex flex-wrap">
-              <div v-for="(link, i) in links" :key="`lin-${i}`" class="link-item">
-                <p class="icon-wrap">
-                  <i :class="link.icon"></i>
-                </p>
-                <p class="tit">{{ link.title }}</p>
-              </div>
-            </div>
-          </div>
+          <el-row class="item-num-wrap" align="middle">
+            <el-col :span="12">普通用户：0</el-col>
+            <span class="gap-line"></span>
+            <el-col :span="12">会员用户：0</el-col>
+          </el-row>
         </div>
-        <div class="right-container column-flex">
-          <!-- 通知 -->
-          <!-- 支持多通知滚动 -->
-          <!-- TODO 滚动动画 -->
-          <div class="notification-wrap normal-wrap flex cross-center">
-            <i class="el-icon-bell no-shrink"></i>
-            <div class="notification-list flex grow">
-              <div class="notification-item flex grow main-between cross-center">
-                <p class="text">关于tiomc系统升级的通知</p>
-                <p class="time">2020-04-08 22:59:20</p>
-              </div>
-            </div>
+        <!-- 总用户 -->
+        <div class="normal-wrap base-msg-item user-num-wrap">
+          <div class="main-num-wrap column-flex h-v-center">
+            <h2>总用户</h2>
+            <p>0</p>
           </div>
+          <el-row class="item-num-wrap" align="middle">
+            <el-col :span="12">普通用户：0</el-col>
+            <span class="gap-line"></span>
+            <el-col :span="12">会员用户：0</el-col>
+          </el-row>
+        </div>
 
-          <div class="normal-wrap customer-service-container">
-            <h1 class="container-tit flex cross-end">在线客服</h1>
-            <div class="service-wrap column-flex h-v-center">
-              <p class="hot-line flex cross-center">
-                <i class="el-icon-service"></i>
-                400-820-82088
-              </p>
-              <a href="javascript:;" class="get-service-btn flex h-v-center">点击在线咨询</a>
-            </div>
+        <div class="base-msg-item column-flex main-between">
+          <div class="normal-wrap specific-msg flex main-between cross-center">
+            <p>今日收入(元)</p>
+            <p><span class="num">22.00</span></p>
           </div>
-
-          <!-- 微信 -->
-          <div class="normal-wrap wechat-container flex flex-wrap">
-            <span class="code-img flex">
-              <!-- 微信公众号图片 -->
-              <el-image :src="''" class="flex grow">
-                <template #error>
-                  <div class="flex h-v-center grow">
-                    <i class="el-icon-picture-outline placeholder-img-icon"></i>
-                  </div>
-                </template>
-              </el-image>
-            </span>
-            <div class="get-wechat-wrap grow">
-              <p class="flex cross-center"><i class="el-icon-chat-dot-round"></i>微信搜一搜</p>
-              <a href="javascript:;" class="flex h-v-center">
-                <i class="el-icon-search"></i>toimc前端技术
-              </a>
-            </div>
-          </div>
-
-          <!-- 常见功能 -->
-          <div class="normal-wrap commonly-question-container column-flex grow">
-            <h1 class="container-tit flex cross-end">
-              常见问题
-              <el-link type="primary" href="javascript:;" class="attach-btn">帮助中心</el-link>
-            </h1>
-            <el-scrollbar>
-              <div class="question-list grow">
-                <p class="question-item">如何进行提现？</p>
-                <p class="question-item">如何上架我的课程？</p>
-                <p class="question-item">toimc内容发布规范？</p>
-                <p class="question-item">提现的审核流程是什么?</p>
-                <p class="question-item">如何创建图文内容的课程？</p>
-                <p class="question-item">上次的视频课程要求是什么？</p>
-              </div>
-            </el-scrollbar>
+          <div class="normal-wrap specific-msg flex main-between cross-center">
+            <p>可提现金额(元)</p>
+            <p class="flex cross-center">
+              <span class="num">22.00</span>
+              <el-link href="javascript:;" type="primary" class="draw-money-btn">
+                提现<i class="el-icon-arrow-right"></i>
+              </el-link>
+            </p>
           </div>
         </div>
       </div>
-    </el-scrollbar>
+
+      <!-- 待办 -->
+      <div class="normal-wrap agenda-container">
+        <h1 class="container-tit">待办事宜</h1>
+        <div class="tabs-wrap">
+          <el-tabs @tab-click="() => {}">
+            <el-tab-pane label="内容上架"></el-tab-pane>
+            <el-tab-pane label="提现"></el-tab-pane>
+            <el-tab-pane label="作者认证"></el-tab-pane>
+            <el-tab-pane label="机构认证"></el-tab-pane>
+            <el-tab-pane label="退款"></el-tab-pane>
+            <el-tab-pane label=""></el-tab-pane>
+          </el-tabs>
+          <el-link type="primary" class="get-more-btn" href="javascript:;">
+            查看更多<i class="el-icon-arrow-right"></i>
+          </el-link>
+        </div>
+        <!-- 表 -->
+        <!-- TODO 后面应该移到 el-tab-pane 中 -->
+        <el-table :data="tableData" style="width: 100%" stripe border>
+          <el-table-column type="index" label="序列" align="center" width="60"></el-table-column>
+          <el-table-column
+            prop="description"
+            label="描述"
+            align="center"
+            width="520"
+          ></el-table-column>
+          <el-table-column prop="comeFrom" label="提交人/机构" align="center"></el-table-column>
+          <el-table-column label="操作" align="center">
+            <el-link type="primary" href="javascript:;">
+              <i class="el-icon-s-tools"></i>处理
+            </el-link>
+          </el-table-column>
+        </el-table>
+      </div>
+
+      <div class="normal-wrap commonly-used-container grow">
+        <h1 class="container-tit flex cross-end">
+          常用功能
+          <el-link type="primary" href="javascript:;" class="attach-btn">自定义</el-link>
+        </h1>
+        <div class="link-list flex flex-wrap">
+          <div v-for="(link, i) in links" :key="`lin-${i}`" class="link-item">
+            <p class="icon-wrap">
+              <i :class="link.icon"></i>
+            </p>
+            <p class="tit">{{ link.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-container column-flex">
+      <!-- 通知 -->
+      <!-- 支持多通知滚动 -->
+      <!-- TODO 滚动动画 -->
+      <div class="notification-wrap normal-wrap flex cross-center">
+        <i class="el-icon-bell no-shrink"></i>
+        <div class="notification-list flex grow">
+          <div class="notification-item flex grow main-between cross-center">
+            <p class="text">关于tiomc系统升级的通知</p>
+            <p class="time">2020-04-08 22:59:20</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="normal-wrap customer-service-container">
+        <h1 class="container-tit flex cross-end">在线客服</h1>
+        <div class="service-wrap column-flex h-v-center">
+          <p class="hot-line flex cross-center">
+            <i class="el-icon-service"></i>
+            400-820-82088
+          </p>
+          <a href="javascript:;" class="get-service-btn flex h-v-center">点击在线咨询</a>
+        </div>
+      </div>
+
+      <!-- 微信 -->
+      <div class="normal-wrap wechat-container flex flex-wrap">
+        <span class="code-img flex">
+          <!-- 微信公众号图片 -->
+          <el-image :src="''" class="flex grow">
+            <template #error>
+              <div class="flex h-v-center grow">
+                <i class="el-icon-picture-outline placeholder-img-icon"></i>
+              </div>
+            </template>
+          </el-image>
+        </span>
+        <div class="get-wechat-wrap grow">
+          <p class="flex cross-center"><i class="el-icon-chat-dot-round"></i>微信搜一搜</p>
+          <a href="javascript:;" class="flex h-v-center">
+            <i class="el-icon-search"></i>toimc前端技术
+          </a>
+        </div>
+      </div>
+
+      <!-- 常见功能 -->
+      <div class="normal-wrap commonly-question-container column-flex grow">
+        <h1 class="container-tit flex cross-end">
+          常见问题
+          <el-link type="primary" href="javascript:;" class="attach-btn">帮助中心</el-link>
+        </h1>
+        <!-- TODO 这里的滚动做不到，高度不能被限制 -->
+        <!-- 说明 这里的 el-scrollbar__view 会受到 home.vue 中设置的影响 -->
+        <el-scrollbar>
+          <div class="question-list grow">
+            <p class="question-item">如何进行提现？</p>
+            <p class="question-item">如何上架我的课程？</p>
+            <p class="question-item">toimc内容发布规范？</p>
+            <p class="question-item">提现的审核流程是什么?</p>
+            <p class="question-item">如何创建图文内容的课程？</p>
+            <p class="question-item">上次的视频课程要求是什么？</p>
+          </div>
+        </el-scrollbar>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- </el-scrollbar> -->
   </div>
 </template>
 
@@ -435,6 +432,7 @@
     .get-wechat-wrap {
       // width: 56%;
       box-sizing: border-box;
+      padding-top: 8px;
       margin-bottom: 20px;
       p {
         color: #333;
@@ -454,7 +452,7 @@
         border-radius: 8px;
         font-size: 20px;
         text-decoration: none;
-        margin-top: 20px;
+        margin-top: 14px;
         box-sizing: border-box;
       }
       .el-icon-search {
@@ -473,6 +471,7 @@
     .question-list {
       color: #666;
       font-size: 16px;
+      overflow: hidden;
       p {
         margin-bottom: 31px;
       }
