@@ -129,9 +129,10 @@
 
 <style scoped lang="scss">
   .main {
-    background: #ffffff;
+    background: #fff;
     padding: 32px 24px;
   }
+
   .top {
     height: 120px;
     padding: 16px;
@@ -146,15 +147,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #333333;
+      color: #333;
       letter-spacing: 1px;
+
       section {
         padding-left: 10px;
+
         span {
-          color: #666666;
+          color: #666;
         }
       }
     }
+
     :deep(.el-image) {
       img {
         width: 136px;
@@ -162,45 +166,55 @@
       }
     }
   }
+
   .table {
     margin-top: 32px;
+
     :deep(.el-table th > .cell) {
       text-align: center;
     }
+
     :deep(.el-table) {
-      color: #333333;
+      color: #333;
     }
+
     :deep(.el-table thead) {
       font-weight: normal;
       font-size: 16px;
-      color: #333333;
+      color: #333;
     }
+
     .title {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       letter-spacing: 1px;
+
       section {
         padding-left: 10px;
       }
     }
+
     :deep(.el-image) {
       img {
         width: 136px;
         height: 88px;
       }
     }
+
     .btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 16px;
       color: #2b9afa;
+
       .el-button {
         font-size: 16px;
       }
     }
   }
+
   .page {
     text-align: right;
     margin-top: 30px;
@@ -208,10 +222,12 @@
     :deep(.el-select .el-input) {
       font-size: 16px;
     }
+
     :deep(.el-pagination__sizes .el-input .el-input__inner),
     :deep(.el-input__inner) {
       font-size: 16px;
     }
+
     :deep(.el-pager li) {
       font-size: 16px;
       height: 40px;
@@ -220,11 +236,13 @@
       border-radius: 4px;
       margin-right: 5px;
     }
+
     :deep(.el-pagination span:not([class*='suffix'])) {
       font-size: 16px;
       height: 40px;
       line-height: 40px;
     }
+
     :deep(.el-pagination button) {
       font-size: 16px;
       height: 40px;
@@ -233,6 +251,7 @@
       border-radius: 4px;
       margin-right: 5px;
     }
+
     :deep(.el-input--mini .el-input__inner) {
       height: 40px;
     }

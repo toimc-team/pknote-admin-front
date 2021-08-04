@@ -118,21 +118,23 @@
 
 <style scoped lang="scss">
   .main {
-    background: #ffffff;
+    background: #fff;
     padding: 32px 24px;
   }
 
   .mt15 {
     margin-top: 15px;
   }
+
   .column {
     font-size: 22px;
     text-align: left;
-    color: #333333;
+    color: #333;
     line-height: 60px;
     position: relative;
     height: 60px;
     padding-left: 12px;
+
     &::before {
       content: '';
       width: 4px;
@@ -145,11 +147,13 @@
       left: 0;
     }
   }
+
   .statistics {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     div {
       height: 172px;
       background: #f8f9fb;
@@ -160,46 +164,58 @@
       justify-content: center;
       align-items: center;
       flex-flow: column;
+
       p {
         text-align: center;
         margin: 10px auto;
         padding: 0;
+
         &.name {
           font-size: 24px;
-          color: #999999;
+          color: #999;
         }
+
         &.num {
           font-size: 40px;
-          color: #333333;
+          color: #333;
         }
       }
+
       &:last-child {
         margin-right: 0;
       }
     }
   }
+
   .table {
     margin-top: 15px;
+
     :deep(.el-table th > .cell) {
       text-align: center;
     }
+
     :deep(.el-table) {
-      color: #333333;
+      color: #333;
     }
+
     :deep(.el-table thead) {
       font-weight: normal;
       font-size: 16px;
-      color: #333333;
+      color: #333;
     }
+
     .title {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       letter-spacing: 1px;
+
       section {
         padding-left: 10px;
+
         .name {
-          color: #999999;
+          color: #999;
+
           span {
             color: #2590f9;
             font-weight: bold;
@@ -207,21 +223,25 @@
         }
       }
     }
+
     :deep(.el-image) {
       img {
         width: 88px;
         height: 88px;
       }
     }
+
     .btn {
       font-size: 16px;
       color: #2b9afa;
       text-align: center;
+
       .el-button {
         font-size: 16px;
       }
     }
   }
+
   .page {
     text-align: right;
     margin-top: 30px;
@@ -229,10 +249,12 @@
     :deep(.el-select .el-input) {
       font-size: 16px;
     }
+
     :deep(.el-pagination__sizes .el-input .el-input__inner),
     :deep(.el-input__inner) {
       font-size: 16px;
     }
+
     :deep(.el-pager li) {
       font-size: 16px;
       height: 40px;
@@ -241,11 +263,13 @@
       border-radius: 4px;
       margin-right: 5px;
     }
+
     :deep(.el-pagination span:not([class*='suffix'])) {
       font-size: 16px;
       height: 40px;
       line-height: 40px;
     }
+
     :deep(.el-pagination button) {
       font-size: 16px;
       height: 40px;
@@ -254,6 +278,7 @@
       border-radius: 4px;
       margin-right: 5px;
     }
+
     :deep(.el-input--mini .el-input__inner) {
       height: 40px;
     }

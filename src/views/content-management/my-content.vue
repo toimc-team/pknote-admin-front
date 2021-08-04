@@ -186,10 +186,12 @@
 <style lang="scss" scoped>
   @import '@/assets/style/mixin.scss';
   @import '@/assets/style/table.scss';
+
   :deep(.el-tabs__item) {
     height: 63px;
     line-height: 63px;
   }
+
   :deep(.el-form-item__content),
   :deep(.el-select),
   :deep(.el-input),
@@ -198,76 +200,95 @@
   :deep(.el-input__icon) {
     line-height: 32px;
   }
+
   :deep(.el-input__inner),
   :deep(.el-button) {
     height: 32px;
   }
+
   :deep(.el-date-editor.el-input, .el-date-editor.el-input__inner) {
     width: 200px;
   }
+
   :deep(.el-form--inline .el-form-item) {
     margin-right: 8px;
   }
+
   :deep(.el-button + .el-button) {
     margin-left: 8px;
   }
+
   :deep(.el-form-item .el-input__inner) {
     width: 200px;
   }
+
   :deep(.el-input__inner) {
-    color: #262626;
-    border-color: #d9d9d9;
     // padding: 0 12px;
     @include placeholder {
       color: #ccc;
     }
+
+    color: #262626;
+    border-color: #d9d9d9;
   }
+
   :deep(.el-button) {
     min-height: 0;
     padding: 0 16px;
   }
+
   :deep(.el-button--primary) {
     background-color: #2b9afa;
     border-color: #2b9afa;
     // color: #fff;
   }
+
   .name-ipt {
     :deep(.el-input__inner) {
       width: 320px;
     }
   }
+
   :deep(.el-link.el-link--primary) {
     color: #2b9afa;
   }
+
   .operate-btn-wrap {
     padding: 0 4px;
   }
+
   :deep(.el-link) {
     font-size: 16px;
   }
+
   .course-img {
     width: 136px;
     height: 88px;
+
     img {
       display: block;
       width: 100%;
       height: 100%;
     }
   }
+
   .course-info {
     padding: 11px 0 12px 0;
     margin-left: 16px;
     line-height: 20px;
     text-align: left;
+
     .status {
       color: #666;
     }
   }
+
   .gap-line {
     width: 1px;
     height: 18px;
     background: #2b9afa;
   }
+
   .pagination-rap {
     margin: 30px 0;
   }

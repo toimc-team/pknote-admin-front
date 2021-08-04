@@ -2,9 +2,11 @@
 :deep(.el-table td) {
   padding: 16px 0;
 }
+
 :deep(.el-table th > .cell) {
   font-size: 16px;
 }
+
 :deep(.el-table .cell) {
   color: #333;
   font-size: 14px;

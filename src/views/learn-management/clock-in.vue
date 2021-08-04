@@ -246,12 +246,14 @@
 
   .clock-in {
     flex: 1;
+
     .head-title {
       display: flex;
       align-items: center;
       box-sizing: border-box;
       padding-left: 24px;
       padding-top: 30px;
+
       .head-icon {
         width: 4px;
         height: 16px;
@@ -260,6 +262,7 @@
         border-radius: 2px;
         margin-right: 10px;
       }
+
       .head-text {
         margin: 0;
         font-size: 22px;
@@ -268,8 +271,9 @@
         line-height: 1;
       }
     }
+
     .head-box {
-      background: #ffffff;
+      background: #fff;
       border-radius: 8px;
       padding-bottom: 20px;
 
@@ -283,6 +287,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
         .card-item {
           margin: 0;
           width: 32.4%;
@@ -294,17 +299,20 @@
           flex-direction: column;
           align-items: center;
           justify-content: space-evenly;
+
           .peple-text {
             margin: 0;
             font-size: 24px;
             color: #999;
           }
+
           .peple-number {
             margin: 0;
             font-size: 40px;
             font-weight: bold;
-            color: #333333;
+            color: #333;
           }
+
           .peple-yesterday-number {
             margin: 0;
             font-size: 20px;
@@ -313,6 +321,7 @@
         }
       }
     }
+
     .record-box {
       margin-top: 15px;
       width: 100%;
@@ -325,21 +334,26 @@
         box-sizing: border-box;
         padding-left: 24px;
         margin-top: 24px;
+
         .form-inline {
           display: flex;
           align-items: center;
         }
+
         .item {
           display: flex;
           align-items: center;
           margin-left: 24px;
+
           span {
             white-space: nowrap;
             margin-right: 26px;
           }
+
           &:nth-of-type(1) {
             margin-left: 0;
           }
+
           &:nth-last-child(1) {
             :deep(.el-button) {
               min-height: 32px;
@@ -357,18 +371,21 @@
           display: flex;
           align-items: center;
           justify-content: center;
+
           .avatar {
             border-radius: 50%;
             width: 64px;
             height: 64px;
             margin-right: 12px;
           }
+
           .nickname {
             font-size: 18px;
             color: #333;
             letter-spacing: 1px;
           }
         }
+
         .dynamic {
           font-size: 14px;
           color: #333;
@@ -389,12 +406,15 @@
       }
     }
   }
+
   :deep(.el-date-editor .el-range-separator) {
     height: 32px;
   }
+
   :deep(.el-input) {
     line-height: 32px;
   }
+
   :deep(.el-input__inner) {
     height: 32px;
     line-height: 32px;
