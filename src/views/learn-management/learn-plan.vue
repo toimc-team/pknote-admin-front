@@ -278,6 +278,7 @@
       box-sizing: border-box;
       padding-left: 24px;
       padding-top: 30px;
+
       .head-icon {
         width: 4px;
         height: 16px;
@@ -286,6 +287,7 @@
         border-radius: 2px;
         margin-right: 10px;
       }
+
       .head-text {
         margin: 0;
         font-size: 22px;
@@ -302,17 +304,21 @@
       margin-top: 30px;
       display: flex;
       align-items: center;
+
       .item {
         display: flex;
         align-items: center;
         margin-left: 24px;
+
         span {
           white-space: nowrap;
           margin-right: 26px;
         }
+
         &:nth-of-type(1) {
           margin-left: 0;
         }
+
         &:nth-last-child(1) {
           :deep(.el-button) {
             min-height: 32px;
@@ -322,6 +328,7 @@
         }
       }
     }
+
     .table {
       margin: 24px 24px 10px;
 
@@ -330,12 +337,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         .avatar {
           border-radius: 50%;
           width: 64px;
           height: 64px;
           margin-right: 12px;
         }
+
         .nickname {
           font-size: 18px;
           color: #333;
@@ -348,6 +357,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         .line {
           height: 14px;
           width: 1px;
@@ -367,12 +377,15 @@
       align-items: center;
       justify-content: flex-end;
     }
+
     :deep(.el-date-editor .el-range-separator) {
       height: 32px;
     }
+
     :deep(.el-input) {
       line-height: 32px;
     }
+
     :deep(.el-input__inner) {
       height: 32px;
       line-height: 32px;
@@ -393,14 +406,17 @@
       width: 98%;
     }
   }
+
   .el-dialog__body {
     padding-top: 0 !important;
   }
+
   .detail-box {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     &:nth-of-type(2) {
       margin-top: 20px;
       display: grid;
@@ -409,16 +425,19 @@
       grid-gap: 0 10px;
       align-items: flex-start;
     }
+
     .item {
       width: 220px;
       height: 120px;
       box-shadow: 1px 0 12px 10px #f5f6fa;
+
       .title {
         padding-left: 20px;
         height: 24px;
         font-size: 18px;
         font-weight: 400;
         position: relative;
+
         &::after {
           position: absolute;
           left: 10px;
@@ -431,16 +450,19 @@
           background-color: #2590f9;
         }
       }
+
       &:nth-of-type(2) {
         .user {
           font-size: 16px;
           font-weight: normal;
         }
+
         .right {
           padding-top: 30px;
           box-sizing: border-box;
         }
       }
+
       .user {
         display: flex;
         align-items: center;
@@ -453,6 +475,7 @@
           height: 50px;
           border-radius: 50%;
         }
+
         span {
           margin-left: 10px;
           max-width: 140px;

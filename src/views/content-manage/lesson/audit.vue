@@ -85,34 +85,40 @@
 
 <style scoped lang="scss">
   .main {
-    background: #ffffff;
+    background: #fff;
     padding: 32px 24px;
   }
+
   .top {
     height: 407px;
-    background: #ffffff;
+    background: #fff;
     text-align: center;
+
     span {
       font-size: 40px;
       font-family: PingFang, PingFang-SC-Bold;
-      font-weight: SC-Bold;
+      font-weight: sc-bold;
       color: #e3e3e3;
       padding-top: 160px;
       display: block;
     }
   }
+
   .table {
     margin-top: 32px;
+
     :deep(.el-table th > .cell) {
       text-align: center;
     }
+
     :deep(.el-table) {
-      color: #333333;
+      color: #333;
     }
+
     :deep(.el-table thead) {
       font-weight: normal;
       font-size: 16px;
-      color: #333333;
+      color: #333;
     }
   }
 </style>

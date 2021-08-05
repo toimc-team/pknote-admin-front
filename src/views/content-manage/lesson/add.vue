@@ -159,17 +159,19 @@
 
 <style scoped lang="scss">
   .main {
-    background: #ffffff;
+    background: #fff;
     padding: 32px 24px;
   }
+
   .column {
     font-size: 22px;
     text-align: left;
-    color: #333333;
+    color: #333;
     line-height: 60px;
     position: relative;
     height: 60px;
     padding-left: 12px;
+
     &::before {
       content: '';
       width: 4px;
@@ -182,17 +184,20 @@
       left: 0;
     }
   }
+
   .flex {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
+
   .tip {
     padding-left: 20px;
     font-size: 16px;
-    color: #666666;
+    color: #666;
     line-height: 36px;
   }
+
   .avatar-uploader {
     width: 320px;
     height: 160px;
@@ -200,30 +205,37 @@
     border: 1px solid #dbdbdb;
     border-radius: 8px;
     text-align: center;
+
     :deep(.el-upload) {
       color: #dbdbdb;
       font-size: 32px;
     }
+
     .el-icon-plus {
       padding-top: 62px;
     }
   }
+
   :deep(.el-form-item__label) {
     font-size: 20px;
-    color: #333333;
+    color: #333;
   }
+
   .relation {
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
+
     :deep(.el-radio) {
       margin-top: 13px;
       margin-bottom: 10px;
+
       .el-radio__label {
         font-size: 16px;
       }
     }
   }
+
   .select-radio {
     width: 365px;
     height: 96px;
@@ -232,9 +244,11 @@
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
+
     :deep(.el-radio__label) {
       font-size: 16px;
     }
+
     .price {
       display: flex;
       justify-content: flex-start;
@@ -242,12 +256,14 @@
       height: 32px;
       line-height: 32px;
       font-size: 16px;
+
       :deep(.el-input) {
         margin: 0 10px;
         width: 120px;
         height: 32px;
         line-height: 32px;
         border-radius: 4px;
+
         .el-input__inner {
           height: 32px;
           line-height: 32px;
