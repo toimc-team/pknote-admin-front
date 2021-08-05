@@ -1,7 +1,11 @@
 <template>
   <el-container class="full-height">
     <!-- 左侧菜单 -->
-    <el-aside width="200px" class="full-height hidden-md-and-down">
+    <el-aside
+      width="200px"
+      class="full-height"
+      :style="'display:' + (isMenuRective ? 'none' : 'block')"
+    >
       <el-scrollbar>
         <el-menu
           class="full-height"
@@ -41,6 +45,11 @@
     <el-container>
       <!-- 头部 -->
       <el-header class="flex main-between main-padding-l" height="56px">
+        <div v-show="isMenuRective" class="toggle-flod flex cross-center" @click="drawer = !drawer">
+          <span>
+            <i class="el-icon-s-unfold"></i>
+          </span>
+        </div>
         <div class="flex cross-center seach-ipt-wrap">
           <el-input v-model="searchStr" placeholder="搜索">
             <template #prefix>
@@ -61,7 +70,13 @@
                 </template>
               </el-image>
             </span>
-            <a href="javascript:;" class="user-btn flex cross-center">admin</a>
+            <el-popover>
+              <template #reference>
+                <a href="javascript:;" class="user-btn flex cross-center">admin</a>
+              </template>
+              <p class="user-operate-btn flex"><el-link href="javascript:;">账户主页</el-link></p>
+              <p class="user-operate-btn flex"><el-link href="javascript:;">退出登录</el-link></p>
+            </el-popover>
           </p>
           <a href="javascript:;" class="exit-btn">退出<i class="el-icon-switch-button"></i></a>
         </div>
@@ -79,11 +94,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue'
+  import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
   import menu from '@/utils/menu'
   export default defineComponent({
     setup() {
-      let { changePath, getCurrMenu, clickMenu, menuConfig } = menu()
+      let { changePath, getCurrMenu, clickMenu, isMenuRective, menuConfig, setMenuRective } = menu()
+      let drawer = ref(false)
 
       // 默认菜单全部展开
       const openArr = ref(
@@ -95,12 +111,19 @@
       onMounted(() => {
         getCurrMenu()
         clickMenu()
+        setMenuRective()
+        window.addEventListener('resize', setMenuRective) // 菜单响应式
+      })
+      onUnmounted(() => {
+        window.removeEventListener('resize', setMenuRective)
       })
 
       return {
         menuConfig,
+        drawer,
         openArr,
         searchStr,
+        isMenuRective,
         clickMenu,
         changePath
       }
@@ -172,6 +195,22 @@
   }
   .logo-wrap {
     margin: 38px 0 46px 0;
+  }
+  :deep(.el-header) {
+    position: relative;
+  }
+  .toggle-flod {
+    height: 100%;
+    color: #666;
+    font-size: 22px;
+    padding: 0 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:hover {
+      background-color: #f5f5f5;
+    }
   }
   .el-icon-search {
     font-size: 18px;
@@ -263,6 +302,15 @@
     padding: 28px 94px 30px 44px;
     box-sizing: border-box;
     min-height: 100%;
+  }
+  .user-operate-btn {
+    height: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    padding-left: 15px;
+    :deep(.el-link) {
+      color: #666;
+    }
   }
 </style>
 <style lang="scss">

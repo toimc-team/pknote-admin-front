@@ -1,7 +1,9 @@
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import config from '@/utils/menu-config'
 
+const WIDTH = 1200 // 菜单消失和出现阀值
+const { body } = document
 export default () => {
   const router = useRouter()
   const route = useRoute()
@@ -10,7 +12,7 @@ export default () => {
 
   /**
    * 获取当前路由对应的菜单位置，并标记
-   * @returns void
+   * @returns {void}
    */
   const getCurrMenu = () => {
     const currPath = route.path
@@ -38,7 +40,7 @@ export default () => {
     /**
      * 标记当前菜单的位置
      * @param item 菜单配置
-     * @returns 是否完成标记
+     * @returns {Boolean} 是否完成标记
      */
     function comparePath(item: any): boolean {
       if (currPath === item.path) {
@@ -71,10 +73,21 @@ export default () => {
       router.push(path)
     }
   }
+
+  const isMenuRective = ref(false) // 标记当前菜单栏是否可显示隐藏的
+  /**
+   * 判断当前菜单栏是否需要显示隐藏
+   */
+  const setMenuRective = () => {
+    const rect = body.getBoundingClientRect()
+    isMenuRective.value = rect.width <= WIDTH
+  }
   return {
     menuConfig,
+    isMenuRective,
     getCurrMenu,
     clickMenu,
-    changePath
+    changePath,
+    setMenuRective
   }
 }
