@@ -1,51 +1,15 @@
 <template>
   <el-container class="full-height">
     <!-- 左侧菜单 -->
-    <el-aside
-      width="200px"
-      class="full-height"
-      :style="'display:' + (isMenuRective ? 'none' : 'block')"
-    >
-      <el-scrollbar>
-        <el-menu
-          class="full-height"
-          :default-openeds="openArr"
-          background-color="#273043"
-          text-color="#fff"
-        >
-          <div class="logo-wrap flex main-center"><i class="icon icon-logo"></i></div>
-          <component
-            :is="menu.noSub ? 'el-menu-item' : 'el-submenu'"
-            v-for="(menu, i) in menuConfig"
-            :key="`sub-menu-${i}`"
-            :index="i.toString()"
-            :class="{ currMenuItem: menu.isCurrent }"
-            @click="changePath(menu.path)"
-          >
-            <template #title>
-              <i :class="menu.icon"></i>
-              {{ menu.title }}
-            </template>
-            <el-menu-item-group v-if="menu.sub">
-              <el-menu-item
-                v-for="(sub, j) in menu.sub"
-                :key="`group-${j}`"
-                :index="`${i}-${j}`"
-                :class="{ currMenuItem: sub.isCurrent }"
-                @click="changePath(sub.path)"
-                >{{ sub.title }}</el-menu-item
-              >
-            </el-menu-item-group>
-          </component>
-        </el-menu>
-      </el-scrollbar>
+    <el-aside class="full-height" width="200">
+      <Menu></Menu>
     </el-aside>
 
     <!-- 右侧 -->
     <el-container>
       <!-- 头部 -->
       <el-header class="flex main-between main-padding-l" height="56px">
-        <div v-show="isMenuRective" class="toggle-flod flex cross-center" @click="drawer = !drawer">
+        <div v-show="isMenuRective" class="toggle-flod flex cross-center" @click="toggleFold">
           <span>
             <i class="el-icon-s-unfold"></i>
           </span>
@@ -94,38 +58,23 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
+  import { defineComponent, ref } from 'vue'
+  import { useStore } from 'vuex'
+  import Menu from '@/components/menu.vue'
   import menu from '@/utils/menu'
   export default defineComponent({
+    components: {
+      Menu
+    },
     setup() {
-      let { changePath, getCurrMenu, clickMenu, isMenuRective, menuConfig, setMenuRective } = menu()
-      let drawer = ref(false)
+      let { isMenuRective, toggleFold } = menu()
 
-      // 默认菜单全部展开
-      const openArr = ref(
-        menuConfig.map((item, i) => {
-          return i.toString()
-        })
-      )
-      const searchStr = ref('')
-      onMounted(() => {
-        getCurrMenu()
-        clickMenu()
-        setMenuRective()
-        window.addEventListener('resize', setMenuRective) // 菜单响应式
-      })
-      onUnmounted(() => {
-        window.removeEventListener('resize', setMenuRective)
-      })
-
+      const searchStr = ref('') // 搜索
+      const store = useStore()
       return {
-        menuConfig,
-        drawer,
-        openArr,
         searchStr,
         isMenuRective,
-        clickMenu,
-        changePath
+        toggleFold
       }
     }
   })
@@ -140,51 +89,9 @@
   :deep(.el-aside) {
     background-color: #273043;
   }
-  :deep(.el-menu) {
-    border-right: none;
-  }
-  :deep(.el-menu-item),
-  :deep(.el-submenu__title) {
-    font-size: 16px;
-    height: 56px;
-    line-height: 56px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2) !important;
-    }
-  }
-  :deep(.el-menu-item-group) {
-    .el-menu-item {
-      font-size: 14px;
-      height: 40px;
-      line-height: 40px;
-    }
-  }
-  :deep(.el-menu-item-group__title) {
-    display: none;
-  }
-  :deep(.el-menu-item i),
-  :deep(.el-submenu__title i) {
-    color: currentColor;
-    vertical-align: -1px;
-  }
-  :deep(.el-menu-item.is-active) {
-    color: #333;
-    background-color: #f5f6fa !important;
-  }
   :deep(header) {
     background-color: #fff;
     padding-right: 0;
-  }
-
-  .icon {
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  .icon-logo {
-    width: 116px;
-    height: 30px;
-    background-image: url('@/assets/logo.png');
   }
   .flex {
     display: flex;
@@ -192,9 +99,6 @@
 
   .main-padding-l {
     padding-left: 64px;
-  }
-  .logo-wrap {
-    margin: 38px 0 46px 0;
   }
   :deep(.el-header) {
     position: relative;
