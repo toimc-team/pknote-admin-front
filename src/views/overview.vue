@@ -246,25 +246,31 @@
 
 <style lang="scss" scoped>
   @import '@/assets/style/table.scss';
+
   .left-container {
     width: 70%;
+
     .base-msg-item {
       width: 32%;
       height: 144px;
       box-sizing: border-box;
     }
   }
+
   .user-num-wrap {
     padding: 0;
     overflow: hidden;
+
     .main-num-wrap {
       height: 104px;
       text-align: center;
+
       h2 {
         color: #999;
         border-width: none;
         font-weight: normal;
       }
+
       p {
         font-size: 32px;
         color: #333;
@@ -272,6 +278,7 @@
         margin-top: 12px;
       }
     }
+
     .item-num-wrap {
       width: 100%;
       height: 40px;
@@ -280,6 +287,7 @@
       font-size: 14px;
       text-align: center;
       position: relative;
+
       .gap-line {
         width: 1px;
         height: 16px;
@@ -291,42 +299,52 @@
         left: 0;
         margin: auto;
       }
+
       :deep(.el-link.el-link--primary) {
         font-size: 16px;
       }
     }
   }
+
   .specific-msg {
     height: 64px;
     color: #666;
     font-size: 16px;
     padding: 0 16px;
+
     .num {
       font-size: 20px;
     }
+
     .draw-money-btn {
       margin-left: 12px;
     }
   }
+
   :deep(.el-link.el-link--primary) {
     color: #2590f9;
   }
+
   h1.container-tit {
     color: #333;
     font-size: 22px;
     font-weight: normal;
     margin: 0;
     padding-top: 24px;
+
     .attach-btn {
       margin-left: 12px;
     }
   }
+
   .agenda-container {
     margin-top: 16px;
     padding-bottom: 24px;
     overflow: hidden;
+
     .tabs-wrap {
       position: relative;
+
       .get-more-btn {
         font-size: 16px;
         position: absolute;
@@ -334,22 +352,28 @@
         right: 0;
       }
     }
+
     :deep(.el-link.el-link--primary) {
       color: #2b9afa;
     }
   }
+
   .el-icon-s-tools {
     margin-right: 8px;
   }
+
   .commonly-used-container {
     margin-top: 16px;
     padding-bottom: 24px;
+
     .link-list {
       margin-top: 24px;
       padding: 0 40px;
+
       .link-item {
         margin-right: 87px;
       }
+
       .icon-wrap {
         width: 56px;
         height: 56px;
@@ -360,6 +384,7 @@
         text-align: center;
         font-size: 28px;
       }
+
       .tit {
         color: #666;
         font-size: 16px;
@@ -368,38 +393,48 @@
       }
     }
   }
+
   .right-container {
     width: 29%;
   }
+
   .notification-wrap {
     height: 64px;
+
     .notification-list {
       margin-left: 8px;
     }
+
     .notification-item {
       .text {
         color: #666;
         font-size: 14px;
       }
+
       .time {
         color: #999;
         font-size: 12px;
       }
     }
   }
+
   .customer-service-container {
     margin-top: 16px;
+
     .service-wrap {
       margin-top: 12px;
     }
+
     .hot-line {
       color: #666;
       margin-top: 20px;
+
       .el-icon-service {
         font-size: 32px;
         margin-right: 15px;
       }
     }
+
     .get-service-btn {
       width: 73%;
       height: 48px;
@@ -415,34 +450,41 @@
   .wechat-container {
     margin-top: 16px;
     padding: 20px 20px 0;
+
     .code-img {
       width: 120px;
       height: 120px;
       margin-right: 32px;
       margin-bottom: 20px;
       background: #f5f5f5;
+
       :deep(.el-image) {
         display: flex;
       }
+
       .placeholder-img-icon {
         color: #666;
         font-size: 28px;
       }
     }
+
     .get-wechat-wrap {
       // width: 56%;
       box-sizing: border-box;
       padding-top: 8px;
       margin-bottom: 20px;
+
       p {
         color: #333;
         font-size: 24px;
+
         i {
           font-size: 40px;
           color: #55b637; // 缺图标 将来用不着的样式
           margin-right: 16px;
         }
       }
+
       a {
         width: 97%;
         max-width: 240px;
@@ -455,6 +497,7 @@
         margin-top: 14px;
         box-sizing: border-box;
       }
+
       .el-icon-search {
         font-size: 24px;
       }
@@ -465,13 +508,16 @@
     margin-top: 16px;
     // max-height: 480px;
     overflow: hidden;
+
     h1 {
       padding-bottom: 31px;
     }
+
     .question-list {
       color: #666;
       font-size: 16px;
       overflow: hidden;
+
       p {
         margin-bottom: 31px;
       }
