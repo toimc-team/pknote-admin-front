@@ -22,15 +22,48 @@
           <div class="login-title">toimc后台管理系统</div>
           <div class="login-way">
             <div class="login-way-label-wrap">
-              <div class="login-way-label active" @click="switchLoginWay(0)">密码登录</div>
-              <div class="login-way-label" @click="switchLoginWay(1)">验证码登录</div>
+              <div class="login-way-label active" @click="switchLoginWay(0, $event)">密码登录</div>
+              <div class="login-way-label" @click="switchLoginWay(1, $event)">验证码登录</div>
             </div>
             <div class="login-way__line"></div>
           </div>
-          <div class="login-input-group"> </div>
+          <div class="login-input-group">
+            <el-form ref="form" :model="loginForm">
+              <el-form-item label-width="0">
+                <el-input
+                  v-model="loginForm.account"
+                  class="login-input"
+                  placeholder="请输入手机号/账号"
+                >
+                  <template #prefix>
+                    <i class="el-input__icon el-icon-s-custom login-input__icon"></i>
+                  </template>
+                </el-input>
+              </el-form-item>
+              <el-form-item label-width="0">
+                <el-input
+                  v-model="loginForm.password"
+                  type="password"
+                  class="login-input"
+                  placeholder="请输入密码"
+                >
+                  <template #prefix>
+                    <i class="el-input__icon el-icon-lock login-input__icon"></i>
+                  </template>
+                </el-input>
+              </el-form-item>
+            </el-form>
+          </div>
 
           <div class="login-btns">
             <el-button class="login-btn" :loading="loginBtnLoading" @click="login">登录</el-button>
+          </div>
+          <div class="login-opts">
+            <el-link :underline="false" type="primary" class="login-opts-link">忘记密码？</el-link>
+            <span>
+              还没有账号？
+              <el-link :underline="false" type="primary" class="login-opts-link">立即注册</el-link>
+            </span>
           </div>
         </div>
       </div>
@@ -46,6 +79,10 @@
     setup() {
       const router = useRouter()
       let loginBtnLoading = ref(false)
+      let loginForm = ref({
+        account: '',
+        password: ''
+      })
 
       const login = () => {
         // ...validate here
@@ -55,18 +92,21 @@
         }, 1500)
       }
 
-      const switchLoginWay = (type: number) => {
-        console.log(type)
+      const switchLoginWay = (type: number, e: Event) => {
+        let w = e.target.offsetLeft + e.target.offsetWidth / 2
       }
 
       onMounted(() => {})
 
       return {
         login,
-        loginBtnLoading,
-        switchLoginWay
+        loginForm,
+        switchLoginWay,
+        loginBtnLoading
       }
-    }
+    },
+
+    computed: {}
   })
 </script>
 
@@ -135,6 +175,7 @@
           .login-way-label-wrap {
             display: flex;
             font-size: 20px;
+            position: relative;
 
             .login-way-label {
               color: #999;
@@ -156,6 +197,8 @@
             height: 4px;
             border-radius: 4px;
             background-color: #2b9afa;
+            transform: translateX(45px) translateX(-50%);
+            transition-duration: 0.3s;
           }
         }
 
@@ -169,6 +212,7 @@
             font-size: 24px;
             box-shadow: 2px 5px 10px #64b7ff;
             border: none;
+            margin-top: 20px;
 
             &:hover {
               transition: all 0.2s;
@@ -176,7 +220,49 @@
             }
           }
         }
+
+        .login-input-group {
+          .login-input {
+            text-align: center;
+          }
+        }
+
+        .login-opts {
+          margin-top: 24px;
+          font-size: 16px;
+          color: #666;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          user-select: none;
+
+          .login-opts-link {
+            font-size: 16px;
+          }
+        }
       }
     }
+  }
+
+  :deep(.el-input__inner) {
+    border: none;
+    border-bottom: 2px solid #eee;
+    outline: none;
+    border-radius: 0;
+    text-indent: 0.5em;
+    transition: all 0.2s;
+    font-size: 16px;
+
+    &:focus {
+      border-bottom: 2px solid #ccc;
+    }
+  }
+
+  :deep(.el-form-item) {
+    margin-bottom: 30px;
+  }
+
+  .login-input__icon {
+    font-size: 20px;
   }
 </style>
