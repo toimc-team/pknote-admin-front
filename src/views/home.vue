@@ -59,7 +59,6 @@
 
 <script lang="ts">
   import { defineComponent, ref } from 'vue'
-  import { useStore } from 'vuex'
   import Menu from '@/components/menu.vue'
   import menu from '@/utils/menu'
   export default defineComponent({
@@ -70,7 +69,6 @@
       let { isMenuRective, toggleFold } = menu()
 
       const searchStr = ref('') // 搜索
-      const store = useStore()
       return {
         searchStr,
         isMenuRective,
@@ -89,6 +87,10 @@
 
   :deep(.el-aside) {
     background-color: #273043;
+  }
+
+  :deep(.el-main) {
+    padding: 0;
   }
 
   :deep(header) {
@@ -226,7 +228,7 @@
   }
 
   .main-content {
-    padding: 28px 94px 30px 44px;
+    padding: 48px 114px 50px 44px;
     box-sizing: border-box;
     min-height: 100%;
   }

@@ -1,8 +1,8 @@
 export default {
   state() {
     return {
-      isMenuRective: Boolean, // 标记当前菜单栏是否可显示隐藏的
-      isFolded: Boolean // 菜单栏隐藏
+      isMenuRective: false, // 标记当前菜单栏是否可显示隐藏的
+      isFolded: true // 菜单栏隐藏
     }
   },
   mutations: {

@@ -205,12 +205,14 @@
 <style lang="scss" scoped>
   .add-form-container {
     overflow: hidden;
+
     h1 {
       color: #333;
       font-size: 22px;
       margin-top: 25px;
       margin-bottom: 30px;
-      &:before {
+
+      &::before {
         content: '';
         width: 4px;
         height: 16px;
@@ -220,17 +222,21 @@
       }
     }
   }
+
   .form-item-tail {
     height: 40px;
     margin-left: 15px;
+
     .example-help-btn {
       color: #51acfb;
       font-size: 16px;
+
       i {
         margin-left: 8px;
       }
     }
   }
+
   .upload {
     width: 50%;
     max-width: 320px;
@@ -240,18 +246,22 @@
     border-radius: 8px;
     text-align: center;
     margin-right: 16px;
+
     :deep(.el-upload) {
       color: #dbdbdb;
       font-size: 32px;
     }
+
     .el-icon-plus {
       padding-top: 62px;
     }
   }
+
   .upload-tip {
     color: #666;
     font-size: 16px;
   }
+
   .price-choice-wrap {
     max-width: 365px;
     color: #333;
@@ -261,33 +271,38 @@
     margin-top: 8px;
     margin-bottom: 12px;
     margin-left: 23px;
+
     :deep(.el-input) {
       max-width: 120px;
-    }
-    :deep(.el-form-item__label) {
-      padding-right: 8px;
-    }
-    :deep(.el-input) {
       font-size: 14px;
       margin-right: 8px;
     }
+
+    :deep(.el-form-item__label) {
+      padding-right: 8px;
+    }
+
     :deep(.el-input__inner) {
       height: 32px;
     }
   }
+
   .set-release-time {
     :deep(.el-radio) {
       margin-right: 16px;
     }
+
     :deep(.el-input) {
       font-size: 14px;
       max-width: 200px;
     }
+
     :deep(.el-input__inner) {
       height: 32px;
       line-height: 32px;
     }
   }
+
   :deep(.el-input) {
     font-size: 16px;
   }
@@ -297,6 +312,7 @@
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
     }
+
     &[type='number'] {
       -moz-appearance: textfield;
     }
@@ -305,25 +321,31 @@
   :deep(.el-radio) {
     color: #333;
   }
+
   :deep(.el-radio__label) {
     font-size: 16px;
   }
+
   :deep(.el-form-item__label) {
     color: #333;
     font-size: 20px;
   }
+
   .submit-btn-wrap {
     margin-top: 38px;
     margin-bottom: 20px;
     padding-left: 90px;
+
     :deep(.el-button) {
       width: 120px;
       height: 48px;
     }
   }
+
   .negative-m-t {
     margin-top: -12px;
   }
+
   section:last-child {
     overflow: hidden;
     margin-top: 25px;

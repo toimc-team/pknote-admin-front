@@ -34,11 +34,11 @@
       </el-menu>
     </el-scrollbar>
   </div>
-  <div class="menu-overlay" v-if="isMenuRective && !isFolded" @click="toggleFold"></div>
+  <div v-if="isMenuRective && !isFolded" class="menu-overlay" @click="toggleFold"></div>
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
+  import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
   // import { useStore } from 'vuex'
   import menu from '@/utils/menu'
   export default defineComponent({
@@ -85,34 +85,37 @@
 </script>
 
 <style lang="scss" scoped>
-  .menu-wrap {
-    transition: transform 0.3s linear;
-  }
   .logo-wrap {
     margin: 38px 0 46px 0;
   }
+
   .icon {
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;
   }
+
   .icon-logo {
     width: 116px;
     height: 30px;
     background-image: url('@/assets/logo.png');
   }
+
   :deep(.el-menu) {
     border-right: none;
   }
+
   :deep(.el-menu-item),
   :deep(.el-submenu__title) {
     font-size: 16px;
     height: 56px;
     line-height: 56px;
+
     &:hover {
       background-color: rgba(255, 255, 255, 0.2) !important;
     }
   }
+
   :deep(.el-menu-item-group) {
     .el-menu-item {
       font-size: 14px;
@@ -120,28 +123,35 @@
       line-height: 40px;
     }
   }
+
   :deep(.el-menu-item-group__title) {
     display: none;
   }
+
   :deep(.el-menu-item i),
   :deep(.el-submenu__title i) {
     color: currentColor;
     vertical-align: -1px;
   }
+
   :deep(.el-menu-item.is-active) {
     color: #333;
     background-color: #f5f6fa !important;
   }
+
   .reactive {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 2005;
     transform: translate3d(-200px, 0, 0);
+    transition: transform 0.3s linear;
+
     &.unfold {
       transform: translate3d(0, 0, 0);
     }
   }
+
   .menu-overlay {
     position: fixed;
     top: 0;
@@ -152,6 +162,5 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     overflow: auto;
-    z-index: 2000;
   }
 </style>
