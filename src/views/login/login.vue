@@ -22,16 +22,32 @@
           <div class="login-title">toimc后台管理系统</div>
           <div class="login-way">
             <div class="login-way-label-wrap">
-              <div class="login-way-label active" @click="switchLoginWay(0, $event)">密码登录</div>
-              <div class="login-way-label" @click="switchLoginWay(1, $event)">验证码登录</div>
+              <div
+                class="login-way-label"
+                :class="loginWay === 0 ? 'active' : ''"
+                @click="switchLoginWay(0, $event)"
+                >密码登录</div
+              >
+              <div
+                class="login-way-label"
+                :class="loginWay === 1 ? 'active' : ''"
+                @click="switchLoginWay(1, $event)"
+                >验证码登录</div
+              >
             </div>
-            <div class="login-way__line"></div>
+            <div class="login-way__line" :style="{ transform: lineOffset }"></div>
           </div>
           <div class="login-input-group">
-            <el-form ref="form" :model="loginForm">
-              <el-form-item label-width="0">
+            <el-form
+              v-show="loginWay === 0"
+              ref="passLogin"
+              :model="passLoginForm"
+              :rules="passLoginRules"
+              label-width="0"
+            >
+              <el-form-item prop="account">
                 <el-input
-                  v-model="loginForm.account"
+                  v-model="passLoginForm.account"
                   class="login-input"
                   placeholder="请输入手机号/账号"
                 >
@@ -40,9 +56,9 @@
                   </template>
                 </el-input>
               </el-form-item>
-              <el-form-item label-width="0">
+              <el-form-item prop="password">
                 <el-input
-                  v-model="loginForm.password"
+                  v-model="passLoginForm.password"
                   type="password"
                   class="login-input"
                   placeholder="请输入密码"
@@ -53,16 +69,49 @@
                 </el-input>
               </el-form-item>
             </el-form>
+            <el-form
+              v-show="loginWay === 1"
+              ref="codeLoginForm"
+              :model="codeLoginForm"
+              :rules="codeLoginRules"
+              label-width="0"
+            >
+              <el-form-item>
+                <el-input
+                  v-model="codeLoginForm.account"
+                  class="login-input"
+                  placeholder="请输入手机号"
+                >
+                  <template #prefix>
+                    <i class="el-input__icon el-icon-s-custom login-input__icon"></i>
+                  </template>
+                </el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-input
+                  v-model="codeLoginForm.code"
+                  class="login-input"
+                  placeholder="请输入验证码"
+                >
+                  <template #prefix>
+                    <i class="el-input__icon el-icon-message-solid login-input__icon"></i>
+                  </template>
+                  <template #suffix>
+                    <span class="text-link" @click="getMsgCode">获取验证码</span>
+                  </template>
+                </el-input>
+              </el-form-item>
+            </el-form>
           </div>
 
           <div class="login-btns">
             <el-button class="login-btn" :loading="loginBtnLoading" @click="login">登录</el-button>
           </div>
           <div class="login-opts">
-            <el-link :underline="false" type="primary" class="login-opts-link">忘记密码？</el-link>
+            <span class="text-link" @click="forgetPass">忘记密码？</span>
             <span>
               还没有账号？
-              <el-link :underline="false" type="primary" class="login-opts-link">立即注册</el-link>
+              <span class="text-link" @click="register">立即注册</span>
             </span>
           </div>
         </div>
@@ -72,45 +121,73 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue'
+  import { defineComponent, reactive, toRefs } from 'vue'
+  import { ElMessage as Message } from 'element-plus'
   import { useRouter } from 'vue-router'
 
   export default defineComponent({
     setup() {
-      const router = useRouter()
-      let loginBtnLoading = ref(false)
-      let loginForm = ref({
-        account: '',
-        password: ''
-      })
+      const router = useRouter(),
+        state = reactive({
+          loginBtnLoading: false,
+          lineOffset: 'translateX(40px) translateX(-50%)',
+          loginWay: 0,
+          loginWayTransitionName: 0
+        }),
+        passLoginForm = reactive({ account: '', password: '' }),
+        codeLoginForm = reactive({ account: '', code: '' }),
+        passLoginRules = {
+          account: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+          password: []
+        },
+        codeLoginRules = {
+          account: [],
+          code: []
+        }
 
-      const login = () => {
+      const login = async () => {
         // ...validate here
-        loginBtnLoading.value = true
+        state.loginBtnLoading = true
         setTimeout(() => {
           router.push('home')
+          Message.success('登录成功')
         }, 1500)
       }
 
       const switchLoginWay = (type: number, e: Event) => {
-        let w = e.target.offsetLeft + e.target.offsetWidth / 2
+        const { offsetLeft, offsetWidth } = e.target as HTMLElement
+        const w = offsetLeft + offsetWidth / 2
+        state.loginWay = type
+        state.lineOffset = `translateX(${w}px) translateX(-50%)`
       }
 
-      onMounted(() => {})
+      const register = () => {}
+
+      const forgetPass = () => {}
+
+      const getMsgCode = () => {}
 
       return {
+        ...toRefs(state),
+        passLoginForm,
+        codeLoginForm,
+        passLoginRules,
+        codeLoginRules,
         login,
-        loginForm,
         switchLoginWay,
-        loginBtnLoading
+        register,
+        forgetPass,
+        getMsgCode
       }
-    },
-
-    computed: {}
+    }
   })
 </script>
 
 <style lang="scss" scoped>
+  // variable
+  $text-link-color: #2b9afa;
+  $text-link-hover-color: #62b6ff;
+
   .el-container {
     width: 100%;
     height: 100%;
@@ -196,8 +273,7 @@
             width: 32px;
             height: 4px;
             border-radius: 4px;
-            background-color: #2b9afa;
-            transform: translateX(45px) translateX(-50%);
+            background-color: $text-link-color;
             transition-duration: 0.3s;
           }
         }
@@ -235,12 +311,18 @@
           align-items: center;
           justify-content: space-between;
           user-select: none;
-
-          .login-opts-link {
-            font-size: 16px;
-          }
         }
       }
+    }
+  }
+
+  .text-link {
+    font-size: 16px;
+    color: $text-link-color;
+    cursor: pointer;
+
+    &:hover {
+      color: $text-link-hover-color;
     }
   }
 
@@ -254,7 +336,7 @@
     font-size: 16px;
 
     &:focus {
-      border-bottom: 2px solid #ccc;
+      border-color: #ccc;
     }
   }
 

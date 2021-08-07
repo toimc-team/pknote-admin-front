@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^4.0.4",
-    "element-plus": "^1.0.2-beta.55",
+    "element-plus": "^1.0.2-beta.70",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.1",
     "tinymce": "^5.8.2",

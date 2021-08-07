@@ -363,6 +363,11 @@
   dependencies:
     chalk "^4.0.0"
 
+"@element-plus/icons@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@element-plus/icons/-/icons-0.0.11.tgz#9b187c002774548b911850d17fa5fc2f9a515f57"
+  integrity sha512-iKQXSxXu131Ai+I9Ymtcof9WId7kaXvB1+WRfAfpQCW7UiAMYgdNDqb/u0hgTo2Yq3MwC4MWJnNuTBEpG8r7+A==
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.nlark.com/@eslint/eslintrc/download/@eslint/eslintrc-0.4.3.tgz?cache=0&sync_timestamp=1626557721285&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40eslint%2Feslintrc%2Fdownload%2F%40eslint%2Feslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
@@ -455,11 +460,6 @@
   version "7.0.8"
   resolved "https://registry.nlark.com/@types/json-schema/download/@types/json-schema-7.0.8.tgz#edf1bf1dbf4e04413ca8e5b17b3b7d7d54b59818"
   integrity sha1-7fG/Hb9OBEE8qOWxezt9fVS1mBg=
-
-"@types/lodash@^4.14.161":
-  version "4.14.171"
-  resolved "https://registry.nlark.com/@types/lodash/download/@types/lodash-4.14.171.tgz#f01b3a5fe3499e34b622c362a46a609fdb23573b"
-  integrity sha1-8Bs6X+NJnjS2IsNipGpgn9sjVzs=
 
 "@types/mdast@^3.0.0":
   version "3.0.7"
@@ -1389,13 +1389,13 @@ electron-to-chromium@^1.3.793:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.798.tgz#12b0bb826ddf35486f2ca41c01be4bd6ad1b9b1e"
   integrity sha512-fwsr6oXAORoV9a6Ak2vMCdXfmHIpAGgpOGesulS1cbGgJmrMl3H+GicUyRG3t+z9uHTMrIuMTleFDW+EUFYT3g==
 
-element-plus@^1.0.2-beta.55:
-  version "1.0.2-beta.55"
-  resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.55.tgz?cache=0&sync_timestamp=1625823476329&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felement-plus%2Fdownload%2Felement-plus-1.0.2-beta.55.tgz#d95886649560c4edf21568e6d4a822e4c74fcdd0"
-  integrity sha1-2ViGZJVgxO3yFWjm1Kgi5MdPzdA=
+element-plus@^1.0.2-beta.70:
+  version "1.0.2-beta.70"
+  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.0.2-beta.70.tgz#13058f4e78c5e73b19a915404d71076a13a2616e"
+  integrity sha512-q9nqxELedLTFMCff5M5CsFbjWQYa6FvcLr1p7QZI64stZ7oEx1EcFnLEeP7dTg0g6iZf1fnaL5df1fVKWY0Dcg==
   dependencies:
+    "@element-plus/icons" "^0.0.11"
     "@popperjs/core" "^2.4.4"
-    "@types/lodash" "^4.14.161"
     async-validator "^3.4.0"
     dayjs "1.x"
     lodash "^4.17.20"
