@@ -91,14 +91,14 @@
               </el-form>
               <el-form
                 v-show="loginWay === 1"
-                ref="codeLoginForm"
+                ref=""
                 :model="codeLoginForm"
                 :rules="codeLoginRules"
                 label-width="0"
               >
-                <el-form-item prop="account">
+                <el-form-item prop="phoneNumber">
                   <el-input
-                    v-model="codeLoginForm.account"
+                    v-model="codeLoginForm.phoneNumber"
                     class="login-input"
                     placeholder="请输入手机号"
                   >
@@ -155,12 +155,7 @@
           <div v-show="loginMode === 2" class="login-mode__register">
             <div class="login-title">注册</div>
             <div class="login-input-group">
-              <el-form
-                ref="codeLoginForm"
-                :model="registerForm"
-                :rules="registerRules"
-                label-width="0"
-              >
+              <el-form ref="" :model="registerForm" :rules="registerRules" label-width="0">
                 <el-form-item prop="phoneNumber">
                   <el-input
                     v-model="registerForm.phoneNumber"
@@ -216,7 +211,7 @@
           <div v-show="loginMode === 3" class="login-mode__forget">
             <div class="login-title">忘记密码</div>
             <div class="login-input-group">
-              <el-form ref="codeLoginForm" :model="forgetForm" :rules="forgetRules" label-width="0">
+              <el-form ref="" :model="forgetForm" :rules="forgetRules" label-width="0">
                 <el-form-item prop="phoneNumber">
                   <el-input
                     v-model="forgetForm.phoneNumber"
@@ -284,7 +279,7 @@
       password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
     },
     codeLoginRules = {
-      account: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
+      phoneNumber: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
       code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
     },
     registerRules = {
@@ -316,7 +311,7 @@
           loginWay: 0
         }),
         passLoginForm = reactive({ account: '', password: '' }),
-        codeLoginForm = reactive({ account: '', code: '' }),
+        codeLoginForm = reactive({ phoneNumber: '', code: '' }),
         registerForm = reactive({ phoneNumber: '', code: '', password: '' }),
         forgetForm = reactive({ phoneNumber: '', code: '', password: '' })
 
