@@ -278,6 +278,7 @@
   import { ElMessage as Message } from 'element-plus'
   import { useRouter } from 'vue-router'
 
+  // form rules
   const passLoginRules = {
       account: [{ required: true, message: '请输入手机号/账号', trigger: 'blur' }],
       password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
@@ -312,8 +313,7 @@
           loginBtnLoading: false,
           registerBtnLoading: false,
           lineOffset: 40,
-          loginWay: 0,
-          loginWayTransitionName: 0
+          loginWay: 0
         }),
         passLoginForm = reactive({ account: '', password: '' }),
         codeLoginForm = reactive({ account: '', code: '' }),
@@ -332,6 +332,10 @@
           Message.success('登录成功')
         }, 1500)
       }
+
+      const loginWayTransitionName = computed(() => {
+        return 'slide-left'
+      })
 
       const switchLoginWay = (type: number, e: Event) => {
         const { offsetLeft, offsetWidth } = e.target as HTMLElement
@@ -361,7 +365,8 @@
         switchLoginWay,
         register,
         forgetPass,
-        getMsgCode
+        getMsgCode,
+        loginWayTransitionName
       }
     }
   })
