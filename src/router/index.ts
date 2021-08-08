@@ -12,6 +12,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     component: Home,
+    redirect: '/overview',
     children: [
       // 概览
       {
