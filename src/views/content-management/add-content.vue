@@ -1,4 +1,5 @@
 <template>
+  <!-- 添加图文、音频、视频 -->
   <el-scrollbar>
     <div class="normal-wrap add-form-container">
       <el-form :model="form">
@@ -35,17 +36,36 @@
               <el-form-item label="课程简介:">
                 <div class="flex flex-wrap">
                   <el-upload
-                    class="upload"
+                    class="upload-img"
                     action="https://jsonplaceholder.typicode.com/posts/"
                     :show-file-list="false"
-                    :on-success="uploadSuccess"
-                    :before-upload="beforeUpload"
+                    :on-success="uploadImgSuccess"
+                    :before-upload="beforeImgUpload"
                     :on-error="uploadError"
                   >
                     <img v-if="imageUrl" src="" alt="" />
                     <i v-else class="el-icon-plus"></i>
                   </el-upload>
                   <p class="upload-tip">请上传16:9的png、jpg、gif格式图片，&lt;5M</p>
+                </div>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col>
+              <el-form-item class="upload-file-form" :label="fielLabel">
+                <div class="flex flex-wrap">
+                  <!-- TODO 回调方法，这里暂时用图片上传的 -->
+                  <el-upload
+                    class="upload-file"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :show-file-list="false"
+                    :on-success="uploadImgSuccess"
+                    :before-upload="beforeImgUpload"
+                    :on-error="uploadError"
+                  >
+                    <el-button>上传文件</el-button>
+                  </el-upload>
                 </div>
               </el-form-item>
             </el-col>
@@ -166,10 +186,10 @@
           label: '精品微课'
         }
       ]
-      const uploadSuccess = (res, file) => {
+      const uploadImgSuccess = (res, file) => {
         imageUrl = URL.createObjectURL(file.raw)
       }
-      const beforeUpload = (file) => {
+      const beforeImgUpload = (file) => {
         console.log('file: ', file)
         // 格式判断
         const { type, size } = file.type
@@ -190,12 +210,14 @@
       const uploadError = (err) => {
         console.log('err: ', err)
       }
+      const fielLabel = ref('视频:')
       return {
         form,
         imageUrl,
         options,
-        uploadSuccess,
-        beforeUpload,
+        fielLabel,
+        uploadImgSuccess,
+        beforeImgUpload,
         uploadError
       }
     }
@@ -237,7 +259,7 @@
     }
   }
 
-  .upload {
+  .upload-img {
     width: 50%;
     max-width: 320px;
     height: 160px;
@@ -254,6 +276,20 @@
 
     .el-icon-plus {
       padding-top: 62px;
+    }
+  }
+
+  .upload-file-form {
+    :deep(.el-form-item__label) {
+      width: 97px;
+    }
+
+    .upload-file {
+      :deep(.el-button) {
+        color: #2b9afa;
+        font-size: 20px;
+        padding: 20px 40px;
+      }
     }
   }
 

@@ -43,6 +43,9 @@
         </el-form>
       </el-col>
       <el-button type="primary" @click="createNew">新建图文</el-button>
+      <!-- TODO 区分按钮 -->
+      <!-- <el-button type="primary" @click="createNew">新建音频</el-button> -->
+      <!-- <el-button type="primary" @click="createNew">新建视频</el-button> -->
     </el-row>
 
     <!-- table -->
@@ -171,7 +174,7 @@
       // 跳转新建
       const router = useRouter()
       const createNew = () => {
-        router.push('/content/add-text')
+        router.push('/content/add-content')
       }
       return {
         field,

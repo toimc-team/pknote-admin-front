@@ -25,8 +25,8 @@ const routes: Array<RouteRecordRaw> = [
       },
       // 新建图文
       {
-        path: '/content/add-text',
-        component: () => import('@/views/content-management/add-text-content.vue')
+        path: '/content/add-content',
+        component: () => import('@/views/content-management/add-content.vue')
       }
     ]
   },
