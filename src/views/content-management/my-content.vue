@@ -1,124 +1,123 @@
 <template>
-  <div class="normal-wrap full-height">
-    <el-scrollbar>
-      <el-tabs>
-        <el-tab-pane label="图文" name=""></el-tab-pane>
-        <el-tab-pane label="音频" name=""></el-tab-pane>
-        <el-tab-pane label="视频" name=""></el-tab-pane>
-      </el-tabs>
+  <div class="normal-wrap grow">
+    <!-- <el-scrollbar> -->
+    <el-tabs>
+      <el-tab-pane label="图文" name=""></el-tab-pane>
+      <el-tab-pane label="音频" name=""></el-tab-pane>
+      <el-tab-pane label="视频" name=""></el-tab-pane>
+    </el-tabs>
 
-      <!-- 表单 -->
-      <el-row justify="space-between">
-        <el-col :span="20">
-          <!-- TODO 解决 console 中的类型警告 -->
-          <el-form :inline="true">
-            <el-form-item>
-              <el-select v-model="sourceStatus" placeholder="请选择">
-                <el-option
-                  v-for="(status, i) in statusOptions"
-                  :key="`资源状态-${i}`"
-                  :label="status.label"
-                  :value="status.value"
-                ></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item>
-              <el-date-picker
-                v-model="createTime"
-                type="date"
-                placeholder="上架时间"
-              ></el-date-picker>
-            </el-form-item>
-            <el-form-item>
-              <el-input
-                v-model="sourceName"
-                :placeholder="'请输入课程名称'"
-                class="name-ipt"
-              ></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary">筛选</el-button>
-              <el-button>重置</el-button>
-            </el-form-item>
-          </el-form>
-        </el-col>
-        <el-button type="primary">新建图文</el-button>
-      </el-row>
+    <!-- 表单 -->
+    <el-row justify="space-between">
+      <el-col :span="20">
+        <!-- TODO 解决 console 中的类型警告 -->
+        <el-form :inline="true">
+          <el-form-item>
+            <el-select v-model="sourceStatus" placeholder="请选择">
+              <el-option
+                v-for="(status, i) in statusOptions"
+                :key="`资源状态-${i}`"
+                :label="status.label"
+                :value="status.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-date-picker
+              v-model="createTime"
+              type="date"
+              placeholder="上架时间"
+            ></el-date-picker>
+          </el-form-item>
+          <el-form-item>
+            <el-input
+              v-model="sourceName"
+              :placeholder="'请输入课程名称'"
+              class="name-ipt"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary">筛选</el-button>
+            <el-button>重置</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+      <el-button type="primary" @click="createNew">新建图文</el-button>
+      <!-- TODO 区分按钮 -->
+      <!-- <el-button type="primary" @click="createNew">新建音频</el-button> -->
+      <!-- <el-button type="primary" @click="createNew">新建视频</el-button> -->
+    </el-row>
 
-      <!-- table -->
-      <el-table
-        ref="multipleTable"
-        :data="tableData"
-        border
-        style="width: 100%"
-        stripe
-        tooltip-effect="dark"
-        @selection-change="() => {}"
-      >
-        <el-table-column type="selection" width1="48" align="center"></el-table-column>
-        <el-table-column label="序列" type="index" width1="79" align="center"></el-table-column>
-        <el-table-column label="课程标题" width="400" align="center">
-          <template #default="scope">
-            <div class="flex">
-              <span class="course-img no-shrink">
-                <img src="" alt="" />
-              </span>
-              <div class="column-flex main-between course-info">
-                <p>{{ scope.row.name }}</p>
-                <p class="status">{{ scope.row.price }}</p>
-              </div>
+    <!-- table -->
+    <el-table
+      ref="multipleTable"
+      :data="tableData"
+      border
+      style="width: 100%"
+      stripe
+      tooltip-effect="dark"
+      @selection-change="() => {}"
+    >
+      <el-table-column type="selection" width1="48" align="center"></el-table-column>
+      <el-table-column label="序列" type="index" width1="79" align="center"></el-table-column>
+      <el-table-column label="课程标题" width="400" align="center">
+        <template #default="scope">
+          <div class="flex">
+            <span class="course-img no-shrink">
+              <img src="" alt="" />
+            </span>
+            <div class="column-flex main-between course-info">
+              <p>{{ scope.row.name }}</p>
+              <p class="status">{{ scope.row.price }}</p>
             </div>
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="sellNum"
-          label="订阅量"
-          width1="119"
-          align="center"
-        ></el-table-column>
-        <el-table-column prop="status" label="状态" width1="119" align="center"></el-table-column>
-        <el-table-column label="关联类容" width="400" align="center">
-          <template #default="scope">
-            <div class="flex">
-              <span class="course-img no-shrink">
-                <img src="" alt="" />
-              </span>
-              <div class="column-flex main-between course-info">
-                <p>{{ scope.row.related.name }}</p>
-                <p class="status">{{ scope.row.related.type }}</p>
-              </div>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" width="214" align="center">
-          <div class="operate-btn-wrap">
-            <el-row justify="space-between" align="middle">
-              <el-link type="primary" class="operate-btn">编辑</el-link>
-              <span class="gap-line"></span>
-              <el-link type="primary" class="operate-btn">上架</el-link>
-              <span class="gap-line"></span>
-              <el-link type="primary" class="operate-btn">分享</el-link>
-              <span class="gap-line"></span>
-              <el-link type="primary" class="operate-btn">更多</el-link>
-            </el-row>
           </div>
-        </el-table-column>
-      </el-table>
-      <el-row justify="end" class="pagination-rap">
-        <el-pagination
-          background
-          layout="total, sizes, prev, pager, next"
-          :page-size="100"
-          :total="1000"
-        >
-        </el-pagination>
-      </el-row>
-    </el-scrollbar>
+        </template>
+      </el-table-column>
+      <el-table-column prop="sellNum" label="订阅量" width1="119" align="center"></el-table-column>
+      <el-table-column prop="status" label="状态" width1="119" align="center"></el-table-column>
+      <el-table-column label="关联类容" width="400" align="center">
+        <template #default="scope">
+          <div class="flex">
+            <span class="course-img no-shrink">
+              <img src="" alt="" />
+            </span>
+            <div class="column-flex main-between course-info">
+              <p>{{ scope.row.related.name }}</p>
+              <p class="status">{{ scope.row.related.type }}</p>
+            </div>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="214" align="center">
+        <div class="operate-btn-wrap">
+          <el-row justify="space-between" align="middle">
+            <el-link type="primary" class="operate-btn">编辑</el-link>
+            <span class="gap-line"></span>
+            <el-link type="primary" class="operate-btn">上架</el-link>
+            <span class="gap-line"></span>
+            <el-link type="primary" class="operate-btn">分享</el-link>
+            <span class="gap-line"></span>
+            <el-link type="primary" class="operate-btn">更多</el-link>
+          </el-row>
+        </div>
+      </el-table-column>
+    </el-table>
+    <el-row justify="end" class="pagination-rap">
+      <el-pagination
+        background
+        layout="total, sizes, prev, pager, next"
+        :page-size="100"
+        :total="1000"
+      >
+      </el-pagination>
+    </el-row>
+    <!-- </el-scrollbar> -->
   </div>
 </template>
 
 <script>
   import { defineComponent, ref } from 'vue'
+  import { useRouter } from 'vue-router'
   export default defineComponent({
     setup() {
       const field = {}
@@ -171,13 +170,20 @@
           }
         }
       ]
+
+      // 跳转新建
+      const router = useRouter()
+      const createNew = () => {
+        router.push('/content/add-content')
+      }
       return {
         field,
         sourceStatus,
         createTime,
         sourceName,
         statusOptions,
-        tableData
+        tableData,
+        createNew
       }
     }
   })

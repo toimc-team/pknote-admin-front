@@ -1,3 +1,4 @@
+// 提醒：接入到菜单栏页面后，要在自己的页面 dom 最外层加一个 'grow' 的样式类
 export default [
   {
     title: '概览',

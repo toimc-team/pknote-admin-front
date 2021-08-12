@@ -1,16 +1,20 @@
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import config from '@/utils/menu-config'
 
+const WIDTH = 1200 // 菜单消失和出现阀值
+const { body } = document
 export default () => {
   const router = useRouter()
   const route = useRoute()
+  const store = useStore()
 
   const menuConfig = reactive(config)
 
   /**
    * 获取当前路由对应的菜单位置，并标记
-   * @returns void
+   * @returns {void}
    */
   const getCurrMenu = () => {
     const currPath = route.path
@@ -38,7 +42,7 @@ export default () => {
     /**
      * 标记当前菜单的位置
      * @param item 菜单配置
-     * @returns 是否完成标记
+     * @returns {Boolean} 是否完成标记
      */
     function comparePath(item: any): boolean {
       if (currPath === item.path) {
@@ -71,10 +75,31 @@ export default () => {
       router.push(path)
     }
   }
+
+  const isMenuRective = computed(() => store.state.menuStore.isMenuRective) // 标记当前菜单栏是否可显示隐藏的
+  const isFolded = computed(() => store.state.menuStore.isFolded) // 菜单栏隐藏
+  /**
+   * 判断当前菜单栏是否需要显示隐藏
+   */
+  const setMenuRective = () => {
+    const rect = body.getBoundingClientRect()
+    store.commit('setMenuRective', rect.width <= WIDTH)
+    store.commit('setFolded', true)
+  }
+  /**
+   * 切换菜单栏的隐藏显示
+   */
+  const toggleFold = () => {
+    store.commit('setFolded', !isFolded.value)
+  }
   return {
     menuConfig,
+    isMenuRective,
+    isFolded,
     getCurrMenu,
     clickMenu,
-    changePath
+    changePath,
+    setMenuRective,
+    toggleFold
   }
 }
