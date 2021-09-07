@@ -4,13 +4,12 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
+
   export default defineComponent({
-    name: 'App'
+    setup() {
+      return {}
+    }
   })
 </script>
 
-<style lang="scss">
-  .full-height {
-    height: 100%;
-  }
-</style>
+<style scoped></style>

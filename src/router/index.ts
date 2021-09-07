@@ -1,37 +1,45 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home.vue'
 
-const routes = [
+import lesson from './modules/lesson'
+
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: Home
+    redirect: '/home'
   },
   {
-    path: '/assetsManagement',
-    name: 'assetsManagement',
-    component: () =>
-      import(/* webpackChunkName: "assetsManagement" */ '@/views/assetsManagement/Index.vue'),
+    path: '/home',
+    component: Home,
     children: [
-      { path: '', redirect: { name: 'assetsManagementHome' } },
+      // 概览
       {
-        path: 'assetsManagementHome',
-        component: () =>
-          import(
-            /* webpackChunkName: "assetsManagementHome" */ '@/views/assetsManagement/AssetsManagement.vue'
-          ),
-        name: 'assetsManagementHome'
+        path: '/overview',
+        component: () => import('@/views/overview.vue')
+      },
+      // 我的内容
+      {
+        path: '/content/my-content',
+        component: () => import('@/views/content-management/my-content.vue')
+      }
+    ]
+  },
+  ...lesson,
+  {
+    path: '/learn-management',
+    name: 'LearnManagement',
+    component: () => import('@/views/learn-management/index.vue'),
+    redirect: '/learn-management/clock-in',
+    children: [
+      {
+        path: 'clock-in',
+        name: 'ClockIn',
+        component: () => import('@/views/learn-management/clock-in.vue')
       },
       {
-        path: 'getCash',
-        component: () =>
-          import(/* webpackChunkName: "getCash" */ '@/views/assetsManagement/GetCash.vue'),
-        name: 'getCash'
-      },
-      {
-        path: 'approvalProcess',
-        component: () =>
-          import(/* webpackChunkName: "forget" */ '@/views/assetsManagement/ApprovalProcess.vue'),
-        name: 'approvalProcess'
+        path: 'learn-plan',
+        name: 'LearnPlan',
+        component: () => import('@/views/learn-management/learn-plan.vue')
       }
     ]
   }
