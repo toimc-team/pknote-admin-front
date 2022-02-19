@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import menuStore from './modules/menu'
 
 interface State {
   count: number
@@ -14,6 +15,9 @@ const store = createStore({
     increase(state: State) {
       state.count++
     }
+  },
+  modules: {
+    menuStore
   }
 })
 

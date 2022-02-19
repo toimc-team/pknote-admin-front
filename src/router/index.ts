@@ -11,6 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     component: Home,
+    redirect: '/overview',
     children: [
       // 概览
       {
@@ -21,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/content/my-content',
         component: () => import('@/views/content-management/my-content.vue')
+      },
+      // 新建图文
+      {
+        path: '/content/add-content',
+        component: () => import('@/views/content-management/add-content.vue')
       }
     ]
   },
