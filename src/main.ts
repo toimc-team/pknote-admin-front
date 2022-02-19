@@ -1,21 +1,27 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+
 import store from '@/store'
 import router from '@/router'
 import 'reset-css'
-import 'normalize.css'
+// import 'normalize.css'
 
+// 取消全局导入
 // 基础样式
-import 'element-plus/packages/theme-chalk/src/base.scss'
-import element from './plugins/element'
+// import 'element-plus/dist/index.css'
+// import ElementPlus from 'element-plus'
 
-// 断点的隐藏类
-import 'element-plus/lib/theme-chalk/display.css'
+// 导入所有的插件
+import * as plugins from './plugins'
 
 const app = createApp(App)
 
+Object.keys(plugins).forEach((file) => {
+  app.use(plugins[file as keyof typeof plugins])
+})
+
 app.use(store)
-app.use(element)
+// app.use(ElementPlus)
 app.use(router)
 
 app.mount('#app')
