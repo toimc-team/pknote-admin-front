@@ -1,17 +1,17 @@
 @mixin placeholder {
-  &::-webkit-input-placeholder {
+  &::input-placeholder {
     @content;
   }
 
-  &:-moz-placeholder {
+  &:placeholder {
     @content;
   }
 
-  &::-moz-placeholder {
+  &::placeholder {
     @content;
   }
 
-  &:-ms-input-placeholder {
+  &:input-placeholder {
     @content;
   }
 }

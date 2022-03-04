@@ -118,8 +118,8 @@
 
 <style scoped lang="scss">
   .main {
-    background: #fff;
     padding: 32px 24px;
+    background: #fff;
   }
 
   .mt15 {
@@ -127,48 +127,48 @@
   }
 
   .column {
-    font-size: 22px;
-    text-align: left;
-    color: #333;
-    line-height: 60px;
     position: relative;
     height: 60px;
     padding-left: 12px;
+    font-size: 22px;
+    line-height: 60px;
+    color: #333;
+    text-align: left;
 
     &::before {
-      content: '';
-      width: 4px;
-      height: 16px;
-      opacity: 1;
-      background: #2590f9;
-      border-radius: 2px;
       position: absolute;
       top: 23px;
       left: 0;
+      width: 4px;
+      height: 16px;
+      background: #2590f9;
+      border-radius: 2px;
+      content: '';
+      opacity: 1;
     }
   }
 
   .statistics {
-    margin-top: 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
 
     div {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
       height: 172px;
+      margin-right: 10px;
       background: #f8f9fb;
       border-radius: 8px;
-      width: 25%;
-      margin-right: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-flow: column;
 
       p {
-        text-align: center;
-        margin: 10px auto;
         padding: 0;
+        margin: 10px auto;
+        text-align: center;
 
         &.name {
           font-size: 24px;
@@ -199,15 +199,15 @@
     }
 
     :deep(.el-table thead) {
-      font-weight: normal;
       font-size: 16px;
+      font-weight: normal;
       color: #333;
     }
 
     .title {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
+      justify-content: flex-start;
       letter-spacing: 1px;
 
       section {
@@ -217,8 +217,8 @@
           color: #999;
 
           span {
-            color: #2590f9;
             font-weight: bold;
+            color: #2590f9;
           }
         }
       }
@@ -243,8 +243,8 @@
   }
 
   .page {
-    text-align: right;
     margin-top: 30px;
+    text-align: right;
 
     :deep(.el-select .el-input) {
       font-size: 16px;
@@ -256,27 +256,27 @@
     }
 
     :deep(.el-pager li) {
-      font-size: 16px;
       height: 40px;
+      margin-right: 5px;
+      font-size: 16px;
       line-height: 40px;
       background: #e1dfe0;
       border-radius: 4px;
-      margin-right: 5px;
     }
 
     :deep(.el-pagination span:not([class*='suffix'])) {
-      font-size: 16px;
       height: 40px;
+      font-size: 16px;
       line-height: 40px;
     }
 
     :deep(.el-pagination button) {
-      font-size: 16px;
       height: 40px;
+      margin-right: 5px;
+      font-size: 16px;
       line-height: 40px;
       background-color: #e1dfe0;
       border-radius: 4px;
-      margin-right: 5px;
     }
 
     :deep(.el-input--mini .el-input__inner) {

@@ -22,8 +22,12 @@
           </el-input>
         </div>
         <div class="account-btn-wrap flex cross-center">
-          <a href="javascript:;" class="home-btn"><i class="el-icon-house"></i></a>
-          <a href="javascript:;" class="notification-btn"><i class="el-icon-bell"></i></a>
+          <a href="javascript:;" class="home-btn">
+            <i class="el-icon-house"></i>
+          </a>
+          <a href="javascript:;" class="notification-btn">
+            <i class="el-icon-bell"></i>
+          </a>
           <p class="pipe flex cross-center">
             <span class="header-img-wrap flex">
               <el-image :src="''" class="flex grow">
@@ -38,11 +42,18 @@
               <template #reference>
                 <a href="javascript:;" class="user-btn flex cross-center">admin</a>
               </template>
-              <p class="user-operate-btn flex"><el-link href="javascript:;">账户主页</el-link></p>
-              <p class="user-operate-btn flex"><el-link href="javascript:;">退出登录</el-link></p>
+              <p class="user-operate-btn flex">
+                <el-link href="javascript:;">账户主页</el-link>
+              </p>
+              <p class="user-operate-btn flex">
+                <el-link href="javascript:;">退出登录</el-link>
+              </p>
             </el-popover>
           </p>
-          <a href="javascript:;" class="exit-btn">退出<i class="el-icon-switch-button"></i></a>
+          <a href="javascript:;" class="exit-btn">
+            退出
+            <i class="el-icon-switch-button"></i>
+          </a>
         </div>
       </el-header>
       <el-main>
@@ -94,8 +105,8 @@
   }
 
   :deep(header) {
-    background-color: #fff;
     padding-right: 0;
+    background-color: #fff;
   }
 
   .flex {
@@ -111,14 +122,14 @@
   }
 
   .toggle-flod {
-    height: 100%;
-    color: #666;
-    font-size: 22px;
-    padding: 0 10px;
-    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 22px;
+    color: #666;
+    cursor: pointer;
 
     &:hover {
       background-color: #f5f5f5;
@@ -136,9 +147,9 @@
         color: #ccc;
       }
 
-      border: none;
-      font-size: 14px;
       margin-left: 7px;
+      font-size: 14px;
+      border: none;
 
       &:focus-visible,
       &:focus {
@@ -153,11 +164,11 @@
 
       &::before,
       &::after {
-        content: '';
+        position: absolute;
         width: 1px;
         height: 16px;
         background-color: #2d2d2d;
-        position: absolute;
+        content: '';
       }
 
       &::before {
@@ -172,44 +183,44 @@
     .header-img-wrap {
       width: 31px;
       height: 31px;
-      border-radius: 50%;
-      background-color: #f5f5f5;
-      overflow: hidden;
       margin-right: 10px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      border-radius: 50%;
 
       :deep(.el-image) {
         display: flex;
       }
 
       .placeholder-img-icon {
-        color: #666;
         font-size: 16px;
+        color: #666;
       }
     }
 
     a {
-      color: #353535;
       margin-right: 42px;
+      color: #353535;
       text-decoration: none;
     }
 
     i {
-      color: inherit;
       font-size: 22px;
+      color: inherit;
     }
 
     .user-btn {
       &::after {
-        content: '';
         display: block;
         width: 0;
         height: 0;
-        border: 5px solid currentColor;
-        border-bottom: none;
-        border-left-color: transparent;
-        border-right-color: transparent;
-        margin-left: 10px;
         margin-top: 3px;
+        margin-left: 10px;
+        border: 5px solid currentcolor;
+        border-bottom: none;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        content: '';
       }
     }
 
@@ -217,27 +228,28 @@
       color: #343434;
 
       i {
-        font-size: 14px;
         margin-left: 8px;
+        font-size: 14px;
       }
     }
   }
+
   // 会影响到后面子页面的 el-scrollbar__view
   :deep(.el-scrollbar__view) {
     height: 100%;
   }
 
   .main-content {
+    min-height: 100%;
     padding: 48px 114px 50px 44px;
     box-sizing: border-box;
-    min-height: 100%;
   }
 
   .user-operate-btn {
     height: 30px;
-    text-decoration: none;
-    font-size: 14px;
     padding-left: 15px;
+    font-size: 14px;
+    text-decoration: none;
 
     :deep(.el-link) {
       color: #666;
@@ -247,9 +259,9 @@
 <style lang="scss">
   // home 页，子页面中使用到的公共样式
   .normal-wrap {
+    padding: 0 24px; // 注意：上下间距并不一定一致
     background-color: #fff;
     border-radius: 8px;
-    padding: 0 24px; // 注意：上下间距并不一定一致
   }
 
   .flex {
@@ -259,6 +271,7 @@
   }
 
   .column-flex {
+    /* stylelint-disable scss/at-extend-no-missing-placeholder */
     @extend .flex;
 
     flex-direction: column;
@@ -293,7 +306,7 @@
   }
 
   .h-v-center {
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 </style>

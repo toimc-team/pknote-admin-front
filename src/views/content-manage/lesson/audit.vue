@@ -85,22 +85,22 @@
 
 <style scoped lang="scss">
   .main {
-    background: #fff;
     padding: 32px 24px;
+    background: #fff;
   }
 
   .top {
     height: 407px;
-    background: #fff;
     text-align: center;
+    background: #fff;
 
     span {
-      font-size: 40px;
+      display: block;
+      padding-top: 160px;
       font-family: PingFang, PingFang-SC-Bold;
+      font-size: 40px;
       font-weight: sc-bold;
       color: #e3e3e3;
-      padding-top: 160px;
-      display: block;
     }
   }
 
@@ -116,8 +116,8 @@
     }
 
     :deep(.el-table thead) {
-      font-weight: normal;
       font-size: 16px;
+      font-weight: normal;
       color: #333;
     }
   }

@@ -7,7 +7,9 @@
         background-color="#273043"
         text-color="#fff"
       >
-        <div class="logo-wrap flex main-center"><i class="icon icon-logo"></i></div>
+        <div class="logo-wrap flex main-center">
+          <i class="icon icon-logo"></i>
+        </div>
         <component
           :is="menu.noSub ? 'el-menu-item' : 'el-submenu'"
           v-for="(menu, i) in menuConfig"
@@ -42,7 +44,7 @@
   // import { useStore } from 'vuex'
   import menu from '@/utils/menu'
   export default defineComponent({
-    name: 'Menu',
+    name: 'MenuIndex',
     setup() {
       let {
         menuConfig,
@@ -86,7 +88,7 @@
 
 <style lang="scss" scoped>
   .logo-wrap {
-    margin: 38px 0 46px 0;
+    margin: 38px 0 46px;
   }
 
   .icon {
@@ -107,19 +109,19 @@
 
   :deep(.el-menu-item),
   :deep(.el-submenu__title) {
-    font-size: 16px;
     height: 56px;
+    font-size: 16px;
     line-height: 56px;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.2) !important;
+      background-color: rgb(255 255 255 / 20%) !important;
     }
   }
 
   :deep(.el-menu-item-group) {
     .el-menu-item {
-      font-size: 14px;
       height: 40px;
+      font-size: 14px;
       line-height: 40px;
     }
   }
@@ -130,7 +132,7 @@
 
   :deep(.el-menu-item i),
   :deep(.el-submenu__title i) {
-    color: currentColor;
+    color: currentcolor;
     vertical-align: -1px;
   }
 
@@ -160,7 +162,7 @@
     left: 0;
     z-index: 2000;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     overflow: auto;
+    background-color: rgb(0 0 0 / 50%);
   }
 </style>

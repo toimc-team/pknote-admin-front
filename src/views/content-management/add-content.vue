@@ -25,9 +25,10 @@
             </el-col>
             <el-col :span="6">
               <div class="form-item-tail flex cross-center">
-                <el-link type="primary" class="example-help-btn"
-                  >查看示例<i class="el-icon-question"></i
-                ></el-link>
+                <el-link type="primary" class="example-help-btn">
+                  查看示例
+                  <i class="el-icon-question"></i>
+                </el-link>
               </div>
             </el-col>
           </el-row>
@@ -43,7 +44,7 @@
                     :before-upload="beforeImgUpload"
                     :on-error="uploadError"
                   >
-                    <img v-if="imageUrl" src="" alt="" />
+                    <img v-if="imageUrl" src alt />
                     <i v-else class="el-icon-plus"></i>
                   </el-upload>
                   <p class="upload-tip">请上传16:9的png、jpg、gif格式图片，&lt;5M</p>
@@ -79,8 +80,7 @@
                   v-model="form.desc"
                   :disabled="disabled"
                   @onClick="onClick"
-                >
-                </tinymce-editor>
+                ></tinymce-editor>
               </el-form-item>
             </el-col>
           </el-row>
@@ -110,14 +110,10 @@
               </p>
               <div>
                 <el-form-item label="课程价格">
-                  <div class="flex"
-                    ><el-input
-                      v-model="form.price"
-                      type="number"
-                      placeholder="请输入价格"
-                    ></el-input>
-                    元</div
-                  >
+                  <div class="flex">
+                    <el-input v-model="form.price" type="number" placeholder="请输入价格"></el-input
+                    >元
+                  </div>
                 </el-form-item>
               </div>
             </div>
@@ -230,18 +226,18 @@
     overflow: hidden;
 
     h1 {
-      color: #333;
-      font-size: 22px;
       margin-top: 25px;
       margin-bottom: 30px;
+      font-size: 22px;
+      color: #333;
 
       &::before {
-        content: '';
         width: 4px;
         height: 16px;
+        margin-right: 12px;
         background: #2590f9;
         border-radius: 4px;
-        margin-right: 12px;
+        content: '';
       }
     }
   }
@@ -251,8 +247,8 @@
     margin-left: 15px;
 
     .example-help-btn {
-      color: #51acfb;
       font-size: 16px;
+      color: #51acfb;
 
       i {
         margin-left: 8px;
@@ -262,17 +258,17 @@
 
   .upload-img {
     width: 50%;
-    max-width: 320px;
     height: 160px;
-    opacity: 1;
+    max-width: 320px;
+    margin-right: 16px;
+    text-align: center;
     border: 1px solid #dbdbdb;
     border-radius: 8px;
-    text-align: center;
-    margin-right: 16px;
+    opacity: 1;
 
     :deep(.el-upload) {
-      color: #dbdbdb;
       font-size: 32px;
+      color: #dbdbdb;
     }
 
     .el-icon-plus {
@@ -287,32 +283,32 @@
 
     .upload-file {
       :deep(.el-button) {
-        color: #2b9afa;
-        font-size: 20px;
         padding: 20px 40px;
+        font-size: 20px;
+        color: #2b9afa;
       }
     }
   }
 
   .upload-tip {
-    color: #666;
     font-size: 16px;
+    color: #666;
   }
 
   .price-choice-wrap {
     max-width: 365px;
-    color: #333;
-    border-radius: 10px;
-    border: 1px solid #dbdbdb;
     padding: 3px 16px 11px;
     margin-top: 8px;
     margin-bottom: 12px;
     margin-left: 23px;
+    color: #333;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
 
     :deep(.el-input) {
       max-width: 120px;
-      font-size: 14px;
       margin-right: 8px;
+      font-size: 14px;
     }
 
     :deep(.el-form-item__label) {
@@ -330,8 +326,8 @@
     }
 
     :deep(.el-input) {
-      font-size: 14px;
       max-width: 200px;
+      font-size: 14px;
     }
 
     :deep(.el-input__inner) {
@@ -343,15 +339,16 @@
   :deep(.el-input) {
     font-size: 16px;
   }
+
   // 去掉 number input 上调下调按钮
   :deep(.el-input__inner) {
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
+      appearance: none;
     }
 
     &[type='number'] {
-      -moz-appearance: textfield;
+      appearance: textfield;
     }
   }
 
@@ -364,14 +361,14 @@
   }
 
   :deep(.el-form-item__label) {
-    color: #333;
     font-size: 20px;
+    color: #333;
   }
 
   .submit-btn-wrap {
+    padding-left: 90px;
     margin-top: 38px;
     margin-bottom: 20px;
-    padding-left: 90px;
 
     :deep(.el-button) {
       width: 120px;
@@ -384,7 +381,7 @@
   }
 
   section:last-child {
-    overflow: hidden;
     margin-top: 25px;
+    overflow: hidden;
   }
 </style>

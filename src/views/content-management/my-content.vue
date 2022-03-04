@@ -246,6 +246,7 @@
   :deep(.el-button--primary) {
     background-color: #2b9afa;
     border-color: #2b9afa;
+
     // color: #fff;
   }
 
@@ -279,7 +280,7 @@
   }
 
   .course-info {
-    padding: 11px 0 12px 0;
+    padding: 11px 0 12px;
     margin-left: 16px;
     line-height: 20px;
     text-align: left;

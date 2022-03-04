@@ -159,56 +159,56 @@
 
 <style scoped lang="scss">
   .main {
-    background: #fff;
     padding: 32px 24px;
+    background: #fff;
   }
 
   .column {
-    font-size: 22px;
-    text-align: left;
-    color: #333;
-    line-height: 60px;
     position: relative;
     height: 60px;
     padding-left: 12px;
+    font-size: 22px;
+    line-height: 60px;
+    color: #333;
+    text-align: left;
 
     &::before {
-      content: '';
-      width: 4px;
-      height: 16px;
-      opacity: 1;
-      background: #2590f9;
-      border-radius: 2px;
       position: absolute;
       top: 23px;
       left: 0;
+      width: 4px;
+      height: 16px;
+      background: #2590f9;
+      border-radius: 2px;
+      content: '';
+      opacity: 1;
     }
   }
 
   .flex {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
   }
 
   .tip {
     padding-left: 20px;
     font-size: 16px;
-    color: #666;
     line-height: 36px;
+    color: #666;
   }
 
   .avatar-uploader {
     width: 320px;
     height: 160px;
-    opacity: 1;
+    text-align: center;
     border: 1px solid #dbdbdb;
     border-radius: 8px;
-    text-align: center;
+    opacity: 1;
 
     :deep(.el-upload) {
-      color: #dbdbdb;
       font-size: 32px;
+      color: #dbdbdb;
     }
 
     .el-icon-plus {
@@ -222,8 +222,8 @@
   }
 
   .relation {
-    box-sizing: border-box;
     display: flex;
+    box-sizing: border-box;
     flex-flow: column;
 
     :deep(.el-radio) {
@@ -239,10 +239,10 @@
   .select-radio {
     width: 365px;
     height: 96px;
-    opacity: 1;
+    padding: 10px;
     border: 1px solid #dbdbdb;
     border-radius: 10px;
-    padding: 10px;
+    opacity: 1;
     box-sizing: border-box;
 
     :deep(.el-radio__label) {
@@ -251,16 +251,16 @@
 
     .price {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
+      justify-content: flex-start;
       height: 32px;
-      line-height: 32px;
       font-size: 16px;
+      line-height: 32px;
 
       :deep(.el-input) {
-        margin: 0 10px;
         width: 120px;
         height: 32px;
+        margin: 0 10px;
         line-height: 32px;
         border-radius: 4px;
 

@@ -8,7 +8,10 @@
         ></el-image>
         <section>
           <p>程序员说</p>
-          <p> <span>会员免费</span> <span>更新至第10期｜更新中</span> </p>
+          <p>
+            <span>会员免费</span>
+            <span>更新至第10期｜更新中</span>
+          </p>
         </section>
       </div>
       <el-button type="text" icon="el-icon-edit">编辑</el-button>
@@ -16,25 +19,29 @@
     <!-- 表格 -->
     <section class="table">
       <el-table :data="tableData" stripe border style="width: 100%">
-        <el-table-column type="index" label="序列" width="100" align="center"> </el-table-column>
+        <el-table-column type="index" label="序列" width="100" align="center"></el-table-column>
         <el-table-column label="课程标题" min-width="280">
           <template #default="scope">
             <div class="title">
               <el-image
                 src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
               ></el-image>
-              <section
-                ><p>{{ scope.row.title }}</p>
+              <section>
+                <p>{{ scope.row.title }}</p>
                 <p>免费</p>
               </section>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="state" label="状态" width="80" align="center"> </el-table-column>
-        <el-table-column prop="issue" label="期数" width="80" align="center"> </el-table-column>
-        <el-table-column prop="date" label="上架时间" width="200" align="center"> </el-table-column>
-        <el-table-column prop="subscribers" label="订阅量" width="80" align="center">
-        </el-table-column>
+        <el-table-column prop="state" label="状态" width="80" align="center"></el-table-column>
+        <el-table-column prop="issue" label="期数" width="80" align="center"></el-table-column>
+        <el-table-column prop="date" label="上架时间" width="200" align="center"></el-table-column>
+        <el-table-column
+          prop="subscribers"
+          label="订阅量"
+          width="80"
+          align="center"
+        ></el-table-column>
         <el-table-column label="操作" fixed="right" width="200" align="center">
           <template #default="scope">
             <div class="btn">
@@ -61,8 +68,7 @@
         next-text="下一页"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-      >
-      </el-pagination>
+      ></el-pagination>
     </section>
   </div>
 </template>
@@ -129,26 +135,25 @@
 
 <style scoped lang="scss">
   .main {
-    background: #fff;
     padding: 32px 24px;
+    background: #fff;
   }
 
   .top {
+    display: flex;
     height: 120px;
     padding: 16px;
     background: #f0f0f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-sizing: border-box;
-    -moz-box-sizing: border-box; /* Firefox */
-    -webkit-box-sizing: border-box; /* Safari */
+    align-items: center;
+    justify-content: space-between;
+
     .left {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #333;
       letter-spacing: 1px;
+      color: #333;
+      align-items: center;
+      justify-content: space-between;
 
       section {
         padding-left: 10px;
@@ -179,15 +184,15 @@
     }
 
     :deep(.el-table thead) {
-      font-weight: normal;
       font-size: 16px;
+      font-weight: normal;
       color: #333;
     }
 
     .title {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
+      justify-content: flex-start;
       letter-spacing: 1px;
 
       section {
@@ -204,8 +209,8 @@
 
     .btn {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       font-size: 16px;
       color: #2b9afa;
 
@@ -216,8 +221,8 @@
   }
 
   .page {
-    text-align: right;
     margin-top: 30px;
+    text-align: right;
 
     :deep(.el-select .el-input) {
       font-size: 16px;
@@ -229,27 +234,27 @@
     }
 
     :deep(.el-pager li) {
-      font-size: 16px;
       height: 40px;
+      margin-right: 5px;
+      font-size: 16px;
       line-height: 40px;
       background: #e1dfe0;
       border-radius: 4px;
-      margin-right: 5px;
     }
 
     :deep(.el-pagination span:not([class*='suffix'])) {
-      font-size: 16px;
       height: 40px;
+      font-size: 16px;
       line-height: 40px;
     }
 
     :deep(.el-pagination button) {
-      font-size: 16px;
       height: 40px;
+      margin-right: 5px;
+      font-size: 16px;
       line-height: 40px;
       background-color: #e1dfe0;
       border-radius: 4px;
-      margin-right: 5px;
     }
 
     :deep(.el-input--mini .el-input__inner) {

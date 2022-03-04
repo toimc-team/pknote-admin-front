@@ -249,56 +249,56 @@
 
     .head-title {
       display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      padding-left: 24px;
       padding-top: 30px;
+      padding-left: 24px;
+      box-sizing: border-box;
+      align-items: center;
 
       .head-icon {
         width: 4px;
         height: 16px;
-        opacity: 1;
+        margin-right: 10px;
         background: #2590f9;
         border-radius: 2px;
-        margin-right: 10px;
+        opacity: 1;
       }
 
       .head-text {
         margin: 0;
         font-size: 22px;
         font-weight: 400;
-        color: #333;
         line-height: 1;
+        color: #333;
       }
     }
 
     .head-box {
+      padding-bottom: 20px;
       background: #fff;
       border-radius: 8px;
-      padding-bottom: 20px;
 
       .data-card {
-        margin-top: 24px;
-        padding: 0 24px;
+        display: flex;
         width: 100%;
         height: 172px;
-        display: flex;
+        padding: 0 24px;
+        margin-top: 24px;
         box-sizing: border-box;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
 
         .card-item {
-          margin: 0;
-          width: 32.4%;
-          height: 172px;
-          background-color: #f8f9fb;
-          border-radius: 8px;
-          overflow: hidden;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-evenly;
+          width: 32.4%;
+          height: 172px;
+          margin: 0;
+          overflow: hidden;
+          background-color: #f8f9fb;
+          border-radius: 8px;
 
           .peple-text {
             margin: 0;
@@ -323,17 +323,17 @@
     }
 
     .record-box {
-      margin-top: 15px;
       width: 100%;
-      border-radius: 8px;
+      margin-top: 15px;
       background-color: #fff;
+      border-radius: 8px;
 
       .record-head {
         display: flex;
-        align-items: center;
-        box-sizing: border-box;
         padding-left: 24px;
         margin-top: 24px;
+        box-sizing: border-box;
+        align-items: center;
 
         .form-inline {
           display: flex;
@@ -346,8 +346,8 @@
           margin-left: 24px;
 
           span {
-            white-space: nowrap;
             margin-right: 26px;
+            white-space: nowrap;
           }
 
           &:nth-of-type(1) {
@@ -356,8 +356,8 @@
 
           &:nth-last-child(1) {
             :deep(.el-button) {
-              min-height: 32px;
               height: 32px;
+              min-height: 32px;
               padding: 0 20px;
             }
           }
@@ -373,34 +373,34 @@
           justify-content: center;
 
           .avatar {
-            border-radius: 50%;
             width: 64px;
             height: 64px;
             margin-right: 12px;
+            border-radius: 50%;
           }
 
           .nickname {
             font-size: 18px;
-            color: #333;
             letter-spacing: 1px;
+            color: #333;
           }
         }
 
         .dynamic {
+          display: box;
+          overflow: hidden;
           font-size: 14px;
           color: #333;
-          display: -webkit-box;
+          text-overflow: ellipsis;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 4;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
       }
 
       .pagination {
+        display: flex;
         padding-right: 15px;
         box-sizing: border-box;
-        display: flex;
         align-items: center;
         justify-content: flex-end;
       }

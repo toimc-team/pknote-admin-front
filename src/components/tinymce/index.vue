@@ -1,6 +1,6 @@
 <template>
   <div class="tinymce-editor">
-    <Editor v-model="myValue" :init="init" :disabled="disabled" @onClick="onClick"> </Editor>
+    <Editor v-model="myValue" :init="init" :disabled="disabled" @onClick="onClick"></Editor>
   </div>
 </template>
 

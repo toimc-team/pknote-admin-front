@@ -266,43 +266,43 @@
 <style lang="scss" scoped>
   .learn-plan {
     flex: 1;
-    border-radius: 8px;
-    background-color: #fff;
     padding: 0 0 24px;
     overflow: hidden;
+    background-color: #fff;
+    border-radius: 8px;
 
     // 头部信息
     .head-title {
       display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      padding-left: 24px;
       padding-top: 30px;
+      padding-left: 24px;
+      box-sizing: border-box;
+      align-items: center;
 
       .head-icon {
         width: 4px;
         height: 16px;
-        opacity: 1;
+        margin-right: 10px;
         background: #2590f9;
         border-radius: 2px;
-        margin-right: 10px;
+        opacity: 1;
       }
 
       .head-text {
         margin: 0;
         font-size: 22px;
         font-weight: 400;
-        color: #333;
         line-height: 1;
+        color: #333;
       }
     }
 
     // 表单栏
     .form {
-      box-sizing: border-box;
+      display: flex;
       padding: 0 24px;
       margin-top: 30px;
-      display: flex;
+      box-sizing: border-box;
       align-items: center;
 
       .item {
@@ -311,8 +311,8 @@
         margin-left: 24px;
 
         span {
-          white-space: nowrap;
           margin-right: 26px;
+          white-space: nowrap;
         }
 
         &:nth-of-type(1) {
@@ -321,8 +321,8 @@
 
         &:nth-last-child(1) {
           :deep(.el-button) {
-            min-height: 32px;
             height: 32px;
+            min-height: 32px;
             padding: 0 20px;
           }
         }
@@ -339,16 +339,16 @@
         justify-content: center;
 
         .avatar {
-          border-radius: 50%;
           width: 64px;
           height: 64px;
           margin-right: 12px;
+          border-radius: 50%;
         }
 
         .nickname {
           font-size: 18px;
-          color: #333;
           letter-spacing: 1px;
+          color: #333;
         }
       }
 
@@ -359,21 +359,21 @@
         justify-content: center;
 
         .line {
-          height: 14px;
           width: 1px;
-          border-radius: 5px;
-          background-color: #2b9afa;
+          height: 14px;
           margin: 0 8px;
           overflow: hidden;
+          background-color: #2b9afa;
+          border-radius: 5px;
         }
       }
     }
 
     // 分页器
     .pagination {
+      display: flex;
       padding-right: 15px;
       box-sizing: border-box;
-      display: flex;
       align-items: center;
       justify-content: flex-end;
     }
@@ -398,12 +398,12 @@
 
     &::after {
       position: absolute;
-      left: 50%;
       bottom: 0;
-      transform: translateX(-50%);
-      content: ' ';
-      height: 1px;
+      left: 50%;
       width: 98%;
+      height: 1px;
+      content: ' ';
+      transform: translateX(-50%);
     }
   }
 
@@ -412,18 +412,18 @@
   }
 
   .detail-box {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 
     &:nth-of-type(2) {
-      margin-top: 20px;
       display: grid;
-      grid-template-columns: repeat(2, 50%);
       grid-template-rows: repeat(2, auto-fill);
+      grid-template-columns: repeat(2, 50%);
       grid-gap: 0 10px;
       align-items: flex-start;
+      margin-top: 20px;
     }
 
     .item {
@@ -432,22 +432,22 @@
       box-shadow: 1px 0 12px 10px #f5f6fa;
 
       .title {
-        padding-left: 20px;
+        position: relative;
         height: 24px;
+        padding-left: 20px;
         font-size: 18px;
         font-weight: 400;
-        position: relative;
 
         &::after {
           position: absolute;
-          left: 10px;
           top: 50%;
-          transform: translateY(-50%);
-          content: ' ';
-          height: 24px;
+          left: 10px;
           width: 4px;
-          border-radius: 10px;
+          height: 24px;
           background-color: #2590f9;
+          border-radius: 10px;
+          content: ' ';
+          transform: translateY(-50%);
         }
       }
 
@@ -477,13 +477,13 @@
         }
 
         span {
-          margin-left: 10px;
           max-width: 140px;
-          white-space: nowrap;
+          margin-left: 10px;
           overflow: hidden;
-          text-overflow: ellipsis;
           font-size: 16px;
           font-weight: 500;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }
