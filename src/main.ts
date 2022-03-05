@@ -4,6 +4,8 @@ import App from './App.vue'
 import store from '@/store'
 import router from '@/router'
 import 'reset-css'
+
+import '@/assets/style/index.scss'
 // import 'normalize.css'
 
 // 取消全局导入

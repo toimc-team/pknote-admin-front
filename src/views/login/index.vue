@@ -1,10 +1,10 @@
 <template>
-  <div class="bg">
-    <div class="outer">
-      <div class="left">
-        <div class="img"></div>
+  <div class="bg fixed flex items-center justify-center w-screen h-screen overflow-hidden">
+    <div class="outer flex">
+      <div class="w-1/2">
+        <div class="img w-4/5 h-full float-right"></div>
       </div>
-      <div class="right">
+      <div class="flex w-1/2">
         <router-view></router-view>
       </div>
     </div>
@@ -19,41 +19,20 @@
 
 <style lang="scss" scoped>
   .bg {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
     line-height: 45px;
     background-color: #266bff;
   }
 
   .outer {
-    display: flex;
     min-width: 960px;
     min-height: 610px;
     margin: 0 auto;
     background: #fff;
     border-radius: 8px;
 
-    .left {
-      width: 50%;
-      height: inherit;
-
-      .img {
-        float: right;
-        width: 80%;
-        height: 100%;
-        background: url('@/assets/image/index.png') no-repeat center 70%;
-        background-size: contain;
-      }
-    }
-
-    .right {
-      display: flex;
-      width: 50%;
+    .img {
+      background: url('@/assets/image/index.png') no-repeat center 70%;
+      background-size: contain;
     }
   }
 </style>
